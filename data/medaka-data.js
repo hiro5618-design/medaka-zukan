@@ -12,7 +12,7 @@
  * ===================================================================== */
 window.MEDAKA_DATA = {
 
-  dataVersion: "0.5",
+  dataVersion: "0.6",
   classificationRef: "JMA第5版",
 
   medakaList: [
@@ -472,6 +472,135 @@ window.MEDAKA_DATA = {
       similarIds: [],
       genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m024" },
       sources: [ { url:"https://hinsyu-zukan.satumano-medakayasan.com/2601/", referencedOn:"2026-07-16" } ]
+    },
+
+    /* ===== inboxバッチ投入（オーロラ系・新しめ品種ほか）===== */
+    {
+      id: "m025", name: "アクアマリン", reading: "あくあまりん", aliases: [], status: "done",
+      phenotype: { bodyColor:"ピュアホワイト(白)", pattern:"", iridophore:"", bodyType:"", finVariation:"リアルロングフィン", eyeVariation:"ルビーアイ" },
+      refTags: ["アルビノ","体外光","リアルロングフィン"],
+      lineage: { strain:"モルフォ系", parentIds:[] },
+      origin: { breeder:"和田敏拓（要確認）", year:"2024年",
+        story:"2024年に和田敏拓氏（要確認）によって作出されたとされています。グッピーのような大きく美しいヒレを持つメダカを目指して開発された品種です。飼育難易度や色柄の固定率については、現時点では調査中です。" },
+      description: "白い体色に、宝石のアクアマリンを思わせる透明感のある青色の大きなヒレを持つ、モルフォ系の品種です。ヒレが通常よりも大きく伸びる「リアルロングフィン」という特徴を持ち、グッピーのように華やかに広がるヒレを目指して作られました。目は赤みを帯びた「ルビーアイ」（アルビノ由来の赤い瞳）で、個体によっては体側にプラチナのような輝きが現れることもあります。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://medakazukan.net/1064_aquamarine/", caption:"参考：アクアマリン No.1064（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: [],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m025" },
+      sources: [ { url:"https://medakazukan.net/1064_aquamarine/", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m026", name: "ミント", reading: "みんと", aliases: [], status: "done",
+      phenotype: { bodyColor:"茶", pattern:"", iridophore:"ラメ", bodyType:"", finVariation:"スワロー", eyeVariation:"" },
+      refTags: ["ラメ","スワロー","オーロラ","半透明鱗"],
+      lineage: { strain:"オーロラ系", parentIds:[] },
+      origin: { breeder:"安藤かおる（武州メダカ・安藤観賞魚／埼玉）", year:"2021年",
+        story:"2021年、埼玉の武州めだか・安藤観賞魚の安藤かおる氏によって作出されました。飼育難易度や固定率については調査中です。" },
+      description: "透明感のある茶色をベースにした体に、緑色のラメ（輝く粒子）が散りばめられた品種です。ヒレの一部が長く伸びる「燕尾（スワロー）」の形質を持ち、優雅な泳ぎ姿が魅力とされる、オーロラ系に分類される品種です。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://hinsyu-zukan.satumano-medakayasan.com/mint", caption:"参考：ミント（みんなのメダカ品種図鑑）", credit:"みんなのメダカ品種図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: [],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m026" },
+      sources: [ { url:"https://hinsyu-zukan.satumano-medakayasan.com/mint", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m027", name: "ガイア", reading: "がいあ", aliases: [], status: "done",
+      phenotype: { bodyColor:"琥珀", pattern:"", iridophore:"ラメ", bodyType:"", finVariation:"", eyeVariation:"" },
+      refTags: ["ラメ","オーロラ"],
+      lineage: { strain:"オーロラ系", parentIds:["m028"] },
+      origin: { breeder:"高州めだか（山梨）", year:"2022年9月",
+        story:"「オベリスク×琥珀ラメ」を親に持ち、2022年9月に山梨の高州めだかで作出されました。名前はギリシャ神話に登場する大地の女神ガイアに由来するとされています。飼育難易度や固定率については調査中です。" },
+      description: "赤茶色から琥珀色を基調とした体に、ラメが輝く品種です。オーロラ系に分類されます。詳しい体型や柄の特徴についての情報は少なく、現時点では調査中です。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://hinsyu-zukan.satumano-medakayasan.com/gaia", caption:"参考：ガイア（みんなのメダカ品種図鑑）", credit:"みんなのメダカ品種図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m028"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m027" },
+      sources: [ { url:"https://hinsyu-zukan.satumano-medakayasan.com/gaia", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m028", name: "オベリスク", reading: "おべりすく", aliases: [], status: "done",
+      phenotype: { bodyColor:"", pattern:"", iridophore:"ラメ", bodyType:"", finVariation:"", eyeVariation:"" },
+      refTags: ["ラメ","オーロラ"],
+      lineage: { strain:"オーロラ系", parentIds:["m007","m014"] },
+      origin: { breeder:"高州めだか（山梨）", year:"2022年6月",
+        story:"「サファイア×夜桜」と「ユリシス」を掛け合わせて作られた品種で、2022年6月に山梨の高州めだかによって作出されました。飼育難易度や固定率については調査中です。" },
+      description: "頭から尾にかけて一筋のラメが走る、ラメ系・オーロラ系の品種です。この一筋のラメの模様が、古代エジプトの石碑「オベリスク」を思わせることから名付けられました。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://hinsyu-zukan.satumano-medakayasan.com/obelisk", caption:"参考：オベリスク（みんなのメダカ品種図鑑）", credit:"みんなのメダカ品種図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m007","m014"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m028" },
+      sources: [ { url:"https://hinsyu-zukan.satumano-medakayasan.com/obelisk", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m029", name: "彩桜", reading: "さいざくら", aliases: [], status: "done",
+      phenotype: { bodyColor:"ピンク", pattern:"", iridophore:"ラメ", bodyType:"普通体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: ["ラメ","オーロラ","半透明鱗"],
+      lineage: { strain:"オーロラ系", parentIds:["m026","m014"] },
+      origin: { breeder:"安藤かおる（武州メダカ／埼玉）", year:"2022年",
+        story:"「通常体型ミント×夜桜」を親に、2022年に埼玉の武州めだかの安藤かおる氏によって作出されました。名前は埼玉県の別名「彩の国」と、熊谷市の花である桜にちなんで付けられたとされています。飼育難易度や固定率については調査中です。" },
+      description: "半透明で淡いピンク色を帯びた体に、ミント由来の緑色のラメが輝く品種です。頭部が桜色に染まる姿が特徴で、オーロラ系に分類されます。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://hinsyu-zukan.satumano-medakayasan.com/saizakura", caption:"参考：彩桜（みんなのメダカ品種図鑑）", credit:"みんなのメダカ品種図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m026"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m029" },
+      sources: [ { url:"https://hinsyu-zukan.satumano-medakayasan.com/saizakura", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m030", name: "クリアブラウン", reading: "くりあぶらうん", aliases: [], status: "done",
+      phenotype: { bodyColor:"茶", pattern:"", iridophore:"", bodyType:"ヒカリ体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: ["ブラックリム","オーロラ","半透明鱗"],
+      lineage: { strain:"オーロラ系の祖", parentIds:[] },
+      origin: { breeder:"二野宮良博（めだか本舗・広島）", year:"2006年",
+        story:"2006年、広島のめだか本舗・二野宮良博氏によって作出されました。飼育難易度や固定率については調査中です。" },
+      description: "透明感のある飴色の体に、鱗の縁が黒く縁取られる「ブラックリム」が入る品種です。体外光を持つ「ヒカリ体型」で、後に生まれる「オーロラ系」と呼ばれる品種群の祖となった、歴史的に重要な品種とされています。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://hinsyu-zukan.satumano-medakayasan.com/clear-brown", caption:"参考：クリアブラウン（みんなのメダカ品種図鑑）", credit:"みんなのメダカ品種図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: [],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m030" },
+      sources: [ { url:"https://hinsyu-zukan.satumano-medakayasan.com/clear-brown", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m031", name: "魅輝", reading: "みき", aliases: [], status: "done",
+      phenotype: { bodyColor:"黄金", pattern:"", iridophore:"ラメ", bodyType:"普通体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: ["ラメ","オーロラ","黄金"],
+      lineage: { strain:"オーロラ系", parentIds:["m028","m023"] },
+      origin: { breeder:"高州めだか（山梨）", year:"2023年3月",
+        story:"「オベリスク×忘却の翼」を親に持ち、2023年3月に山梨の高州めだかによって作出されました。飼育難易度や固定率については調査中です。" },
+      description: "金色（ゴールド）の体の中央に、一筋の青いラメが入る独特な配色を持つ品種です。ラメ系・オーロラ系に分類されます。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://hinsyu-zukan.satumano-medakayasan.com/miki", caption:"参考：魅輝（みんなのメダカ品種図鑑）", credit:"みんなのメダカ品種図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m028"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m031" },
+      sources: [ { url:"https://hinsyu-zukan.satumano-medakayasan.com/miki", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m032", name: "紫延", reading: "しえん", aliases: [], status: "done",
+      phenotype: { bodyColor:"", pattern:"", iridophore:"体外光(幹之)", bodyType:"ヒカリ体型", finVariation:"ヒレ長", eyeVariation:"" },
+      refTags: ["体外光","ヒレ長"],
+      lineage: { strain:"体外光系", parentIds:["m003"] },
+      origin: { breeder:"B型おやじ（愛知）", year:"2023年8月",
+        story:"「緑光×幹之」を親に、2023年8月に愛知のB型おやじ氏によって作出されました。「紫を延ばしていく」という育成理念が名前の由来とされています。飼育難易度や固定率については調査中です。" },
+      description: "光の当たり方によって紫色に輝く独特の光沢を持つ品種です。頭部とヒレに黒色が入り、体外光を持つ「ヒカリ体型」で、ヒレが長く伸びる特徴があります。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://hinsyu-zukan.satumano-medakayasan.com/shien", caption:"参考：紫延（みんなのメダカ品種図鑑）", credit:"みんなのメダカ品種図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m003"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m032" },
+      sources: [ { url:"https://hinsyu-zukan.satumano-medakayasan.com/shien", referencedOn:"2026-07-16" } ]
     }
 
   ]
