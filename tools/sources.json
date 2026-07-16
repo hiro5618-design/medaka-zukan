@@ -1,0 +1,28 @@
+{
+  "_comment": "品種発見クローラの情報源ウォッチリスト（中核ソース）。mode=品種名の抽出方法。",
+  "user_agent": "MedakaZukanBot/1.0 (personal hobby crawler; polite, low-frequency)",
+  "request_interval_sec": 2,
+  "sources": [
+    {
+      "name": "改良メダカWEB図鑑(新着)",
+      "url": "https://medakazukan.net/feed/",
+      "mode": "toha",
+      "must_contain": "改良メダカWEB図鑑No",
+      "note": "タイトル『〇〇とは 改良メダカWEB図鑑No.xxxx』から〇〇を抽出"
+    },
+    {
+      "name": "みんなのメダカ品種図鑑(新着)",
+      "url": "https://hinsyu-zukan.satumano-medakayasan.com/feed/",
+      "mode": "title",
+      "must_contain": "",
+      "note": "タイトルがほぼ品種名そのもの。括弧内の読みは除去"
+    },
+    {
+      "name": "めだかの館 通販(新着)",
+      "url": "https://www.medakanoyakata.jp/?mode=rss",
+      "mode": "colon",
+      "must_contain": "",
+      "note": "商品名『〇〇：オスx、メスy、@サイズ』から〇〇を抽出。在庫表記が多くノイズ多め=人手確認前提"
+    }
+  ]
+}

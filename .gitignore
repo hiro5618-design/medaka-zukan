@@ -1,0 +1,10 @@
+# クローラの実行時ファイル（公開不要・端末ごとに生成される）
+tools/inbox.json
+tools/inbox.md
+tools/crawler-log.txt
+tools/__pycache__/
+
+# OS が作る不要ファイル
+Thumbs.db
+.DS_Store
+desktop.ini

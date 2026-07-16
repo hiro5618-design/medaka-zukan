@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>改良メダカ図鑑</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>改良メダカ図鑑</h1>
+    <p class="subtitle" id="subtitle">読み込み中…</p>
+  </header>
+
+  <main class="container">
+    <!-- 検索・絞り込み -->
+    <section class="controls">
+      <input type="search" id="searchBox" placeholder="品種名・よみ・別名で検索…" aria-label="検索">
+      <div id="filterArea" class="filter-area"><!-- JS が分類フィルタを生成 --></div>
+      <div class="result-count" id="resultCount"></div>
+    </section>
+
+    <!-- 一覧（写真カード） -->
+    <section id="cardGrid" class="card-grid" aria-live="polite"></section>
+  </main>
+
+  <!-- 詳細（モーダル） -->
+  <div id="detailModal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-backdrop" data-close="1"></div>
+    <div class="modal-body" id="detailBody"></div>
+  </div>
+
+  <footer class="site-footer">
+    <p>個人利用の学習用図鑑です。写真・情報は各出典元に帰属します。分類は日本メダカ協会（JMA）品種分類マニュアル準拠。</p>
+  </footer>
+
+  <!-- データと見た目を分離：データは JS 埋め込み（fetch不使用でローカル起動可）-->
+  <script src="data/classification.js"></script>
+  <script src="data/medaka-data.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

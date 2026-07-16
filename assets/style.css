@@ -1,0 +1,130 @@
+/* =========================================================
+ * style.css ―― 改良メダカ図鑑
+ * ライト/ダーク両対応。写真カード一覧＋詳細モーダル。
+ * ========================================================= */
+:root{
+  --bg:#f5f7fa; --panel:#ffffff; --text:#1c2430; --muted:#6b7684;
+  --border:#e2e8f0; --accent:#2b6cb0; --accent-weak:#e6f0fa;
+  --chip:#eef2f7; --shadow:0 1px 3px rgba(0,0,0,.08),0 4px 12px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#12161c; --panel:#1b212a; --text:#e6ebf1; --muted:#9aa7b4;
+    --border:#2a323d; --accent:#63a4e0; --accent-weak:#1e2a38;
+    --chip:#232c37; --shadow:0 1px 3px rgba(0,0,0,.4),0 6px 16px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12161c; --panel:#1b212a; --text:#e6ebf1; --muted:#9aa7b4;
+  --border:#2a323d; --accent:#63a4e0; --accent-weak:#1e2a38;
+  --chip:#232c37; --shadow:0 1px 3px rgba(0,0,0,.4),0 6px 16px rgba(0,0,0,.35);
+}
+:root[data-theme="light"]{
+  --bg:#f5f7fa; --panel:#ffffff; --text:#1c2430; --muted:#6b7684;
+  --border:#e2e8f0; --accent:#2b6cb0; --accent-weak:#e6f0fa;
+  --chip:#eef2f7; --shadow:0 1px 3px rgba(0,0,0,.08),0 4px 12px rgba(0,0,0,.05);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:"Yu Gothic","Hiragino Kaku Gothic ProN",Meiryo,system-ui,sans-serif;
+  line-height:1.6;
+}
+.site-header{
+  padding:24px 20px; text-align:center;
+  background:linear-gradient(135deg,var(--accent),#1a4a7a); color:#fff;
+}
+.site-header h1{margin:0; font-size:1.7rem; letter-spacing:.05em}
+.subtitle{margin:.4em 0 0; opacity:.9; font-size:.9rem}
+.container{max-width:1080px; margin:0 auto; padding:20px}
+
+/* コントロール */
+.controls{margin-bottom:18px}
+#searchBox{
+  width:100%; padding:11px 14px; font-size:1rem;
+  border:1px solid var(--border); border-radius:10px;
+  background:var(--panel); color:var(--text);
+}
+.filter-area{margin-top:14px; display:flex; flex-direction:column; gap:10px}
+.filter-group{display:flex; flex-wrap:wrap; gap:6px; align-items:center}
+.filter-group .group-label{
+  font-size:.8rem; color:var(--muted); min-width:5.5em; font-weight:700;
+}
+.chip{
+  border:1px solid var(--border); background:var(--chip); color:var(--text);
+  padding:4px 11px; border-radius:999px; font-size:.82rem; cursor:pointer;
+  transition:all .15s;
+}
+.chip:hover{border-color:var(--accent)}
+.chip.active{background:var(--accent); color:#fff; border-color:var(--accent)}
+.result-count{margin-top:12px; font-size:.85rem; color:var(--muted)}
+
+/* カード一覧 */
+.card-grid{
+  display:grid; gap:16px;
+  grid-template-columns:repeat(auto-fill,minmax(210px,1fr));
+}
+.card{
+  background:var(--panel); border:1px solid var(--border); border-radius:14px;
+  overflow:hidden; cursor:pointer; box-shadow:var(--shadow);
+  transition:transform .15s, box-shadow .15s;
+}
+.card:hover{transform:translateY(-3px); box-shadow:0 8px 22px rgba(0,0,0,.14)}
+.card-photo{
+  height:92px; display:flex; align-items:center; justify-content:center;
+}
+.card-photo svg{opacity:.92}
+.card-info{padding:12px 14px}
+.card-name{font-weight:700; font-size:1.05rem; margin:0}
+.card-reading{color:var(--muted); font-size:.75rem; margin:.1em 0 .5em}
+.card-tags{display:flex; flex-wrap:wrap; gap:4px}
+.mini-tag{font-size:.7rem; background:var(--accent-weak); color:var(--accent);
+  padding:2px 7px; border-radius:6px}
+.badge-draft{font-size:.66rem; background:#f0ad4e; color:#3a2600;
+  padding:1px 6px; border-radius:6px; margin-left:6px; vertical-align:middle}
+
+/* 詳細モーダル */
+.modal{position:fixed; inset:0; z-index:50; display:flex;
+  align-items:flex-start; justify-content:center; padding:24px; overflow-y:auto}
+.modal.hidden{display:none}
+.modal-backdrop{position:fixed; inset:0; background:rgba(0,0,0,.5)}
+.modal-body{
+  position:relative; background:var(--panel); color:var(--text);
+  border-radius:16px; max-width:720px; width:100%; padding:26px 28px;
+  box-shadow:var(--shadow); margin:auto;
+}
+.detail-close{
+  position:absolute; top:14px; right:16px; border:none; background:var(--chip);
+  color:var(--text); width:34px; height:34px; border-radius:50%; cursor:pointer;
+  font-size:1.1rem;
+}
+.detail-hero{height:96px; border-radius:12px; margin:6px 0 18px;
+  display:flex; align-items:center; justify-content:center}
+.detail-body h2{margin:0; font-size:1.5rem}
+.detail-reading{color:var(--muted); font-size:.85rem; margin:.2em 0 .2em}
+.detail-aliases{color:var(--muted); font-size:.8rem; margin:0 0 14px}
+.spec-table{width:100%; border-collapse:collapse; margin:6px 0 18px; font-size:.9rem}
+.spec-table th,.spec-table td{
+  text-align:left; padding:7px 10px; border-bottom:1px solid var(--border);
+  vertical-align:top}
+.spec-table th{width:34%; color:var(--muted); font-weight:600}
+.detail-section{margin:16px 0}
+.detail-section h3{font-size:1rem; margin:0 0 6px;
+  border-left:4px solid var(--accent); padding-left:8px}
+.detail-section p{margin:.3em 0; white-space:pre-wrap}
+.detail-section ul{margin:.3em 0; padding-left:1.2em}
+.stars{color:#e6a817; letter-spacing:.1em}
+.src-link{color:var(--accent); word-break:break-all; font-size:.82rem}
+.tag-row{display:flex; flex-wrap:wrap; gap:5px; margin-top:4px}
+.ref-note{font-size:.75rem; color:var(--muted)}
+.empty{color:var(--muted); font-style:italic}
+
+.site-footer{
+  max-width:1080px; margin:20px auto 40px; padding:16px 20px;
+  color:var(--muted); font-size:.78rem; text-align:center;
+}
+@media (max-width:520px){
+  .spec-table th{width:42%}
+  .card-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+}
