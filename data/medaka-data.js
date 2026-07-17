@@ -12,7 +12,7 @@
  * ===================================================================== */
 window.MEDAKA_DATA = {
 
-  dataVersion: "0.6",
+  dataVersion: "0.7",
   classificationRef: "JMA第5版",
 
   medakaList: [
@@ -601,6 +601,229 @@ window.MEDAKA_DATA = {
       similarIds: ["m003"],
       genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m032" },
       sources: [ { url:"https://hinsyu-zukan.satumano-medakayasan.com/shien", referencedOn:"2026-07-16" } ]
+    },
+
+    /* ===== inboxバッチ投入 その2（RLF版・めだかの館の品種ほか）===== */
+    {
+      id: "m033", name: "琴姫リアルロングフィン", reading: "ことひめりあるろんぐふぃん", aliases: ["琥珀透明鱗ブラックリムリアルロングフィン"], status: "done",
+      phenotype: { bodyColor:"琥珀", pattern:"無地", iridophore:"", bodyType:"ヒカリ体型", finVariation:"リアルロングフィン", eyeVariation:"なし" },
+      refTags: ["ブラックリム","透明鱗","リアルロングフィン"],
+      lineage: { strain:"琴姫系", parentIds:[] },
+      origin: { breeder:"和田敏拓", year:"2023年",
+        story:"2023年、和田敏拓氏によって作出されたとされています。「琴姫」にリアルロングフィンの形質を取り入れて生まれた品種です。飼育難易度や固定率については調査中です。" },
+      description: "琴姫リアルロングフィンは、琥珀色の体に朱赤の尾ビレや腹のラインが映え、鱗の縁が黒く縁取られる「ブラックリム」と透明鱗をあわせ持つ、ヒカリ体型の品種です。全ヒレが通常の1.5倍以上に伸びる「リアルロングフィン」で、優雅なシルエットが魅力です。\n\nベースは「琴姫（琥珀透明鱗ブラックリムヒカリ）」で、これにヒレ長の形質を組み合わせた品種です。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0914_kotohimereallongfin/", caption:"参考：琴姫リアルロングフィン No.0914（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: [],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m033" },
+      sources: [ { url:"https://medakazukan.net/0914_kotohimereallongfin/", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m034", name: "レーヴサムライヒカリ", reading: "れーゔさむらいひかり", aliases: [], status: "done",
+      phenotype: { bodyColor:"スカイブルー(青)", pattern:"無地", iridophore:"体外光(幹之)", bodyType:"ヒカリ体型", finVariation:"サムライ", eyeVariation:"なし" },
+      refTags: ["サムライ","体外光"],
+      lineage: { strain:"レーヴ系", parentIds:[] },
+      origin: { breeder:"不明", year:"不明",
+        story:"「レーヴ」系から生まれた品種ですが、作出者・作出年は調査中です。" },
+      description: "レーヴサムライヒカリは、青い体に体外光をのせたヒカリ体型で、背ビレが変化する「サムライ」の形質を持つ希少な個体です。各ヒレに光が入り、華やかな印象を与えます。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0913_revesamuraihikari/", caption:"参考：レーヴサムライヒカリ No.0913（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: [],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m034" },
+      sources: [ { url:"https://medakazukan.net/0913_revesamuraihikari/", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m035", name: "三色ラメリアルロングフィン", reading: "さんしょくらめりあるろんぐふぃん", aliases: [], status: "done",
+      phenotype: { bodyColor:"", pattern:"三色", iridophore:"ラメ", bodyType:"", finVariation:"リアルロングフィン", eyeVariation:"" },
+      refTags: ["ラメ","リアルロングフィン"],
+      lineage: { strain:"白朱赤系", parentIds:["m008"] },
+      origin: { breeder:"不明", year:"不明",
+        story:"「三色ラメ」をベースに、ヒレ長の形質を組み合わせた品種です。作出者・作出年は調査中です。" },
+      description: "三色ラメリアルロングフィンは、白と朱赤の二色にラメ（鱗がキラキラ輝く形質）がのり、全ヒレが通常の1.5倍以上に伸びるリアルロングフィンの品種です。三色の色合いと長いヒレが合わさった華やかな姿が特徴です。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0912_sansyhokulamereallongfin/", caption:"参考：三色ラメリアルロングフィン No.0912（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m008"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m035" },
+      sources: [ { url:"https://medakazukan.net/0912_sansyhokulamereallongfin/", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m036", name: "紅薊リアルロングフィン", reading: "べにあざみりあるろんぐふぃん", aliases: [], status: "done",
+      phenotype: { bodyColor:"楊貴妃(朱赤)", pattern:"無地", iridophore:"体外光(幹之)", bodyType:"ヒカリ体型", finVariation:"リアルロングフィン", eyeVariation:"なし" },
+      refTags: ["ブラックリム","透明鱗","体外光","リアルロングフィン"],
+      lineage: { strain:"紅薊系", parentIds:["m018"] },
+      origin: { breeder:"不明", year:"不明",
+        story:"「紅薊」に「紅リアルロングフィン」を交配して生まれた品種です。作出者・作出年は調査中です。" },
+      description: "紅薊リアルロングフィンは、朱赤の体に透明鱗（エラが赤く透ける）とブラックリム（鱗の黒い縁取り）、体外光をあわせ持つヒカリ体型で、全ヒレが長く伸びる品種です。ヒレにも色がのり、紅薊の華やかさをより優雅に見せます。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0911_beniazamireallongfin/", caption:"参考：紅薊リアルロングフィン No.0911（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m018"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m036" },
+      sources: [ { url:"https://medakazukan.net/0911_beniazamireallongfin/", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m037", name: "ブラックタイド・ゼブラ", reading: "ぶらっくたいど・ぜぶら", aliases: [], status: "done",
+      phenotype: { bodyColor:"ブラック", pattern:"斑(ぶち)", iridophore:"", bodyType:"", finVariation:"", eyeVariation:"" },
+      refTags: [],
+      lineage: { strain:"ブラックタイド系", parentIds:["m005"] },
+      origin: { breeder:"のら猫ギン（福岡）", year:"2022年",
+        story:"ブラックタイド（小川ブラックマルコ×流星）や極ブラック、オロチが関わる系統から、2022年に福岡の「のら猫ギン」によって作出されました。飼育難易度や固定率については調査中です。" },
+      description: "ブラックタイド・ゼブラは、黒い体の墨（黒色）の一部が退色することで縞模様が現れる、ユニークな品種です。名前は「黒潮（ブラックタイド）」と「シマウマ（ゼブラ）」に由来します。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://hinsyu-zukan.satumano-medakayasan.com/black-tide-zebra", caption:"参考：ブラックタイド・ゼブラ（みんなのメダカ品種図鑑）", credit:"みんなのメダカ品種図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m005"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m037" },
+      sources: [ { url:"https://hinsyu-zukan.satumano-medakayasan.com/black-tide-zebra", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m038", name: "初恋ヒレ長", reading: "はつこいひれなが", aliases: ["朱赤ダルマヒレ長"], status: "done",
+      phenotype: { bodyColor:"楊貴妃(朱赤)", pattern:"無地", iridophore:"なし", bodyType:"ダルマ", finVariation:"ヒレ長", eyeVariation:"なし" },
+      refTags: ["ヒレ長","ダルマ"],
+      lineage: { strain:"初恋（朱赤ダルマ）＋ヒレ長", parentIds:[] },
+      origin: { breeder:"不明（ヒレ長形質＝松井勝二郎）", year:"不明",
+        story:"朱赤ダルマの固定品種「初恋」に、ヒレ長の形質を組み合わせた品種です。ヒレ長の形質は2015年に松井勝二郎氏が確立しました。組み合わせ品種としての作出者・作出年は調査中です。" },
+      description: "初恋ヒレ長は、朱赤のダルマ体型（丸く短い体型）に、長く伸びたヒレを組み合わせた品種です。ぷっくりとした体と流れるようなヒレの対比が愛らしく、優雅な印象を与えます。\n\nダルマ体型もヒレ長も繊細な形質のため、ヒレの先が裂けやすく、水流や水温の変化に注意が必要です。",
+      care: { difficulty:3, points:["ヒレが長く水流の影響を受けやすい","ダルマ体型は水温変化に注意"] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0273_hatukoihirenaga/", caption:"参考：初恋ヒレ長 No.0273（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m010"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m038" },
+      sources: [ { url:"https://medakazukan.net/0273_hatukoihirenaga/", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m039", name: "フロストイエローダルマ", reading: "ふろすといえろーだるま", aliases: [], status: "draft",
+      phenotype: { bodyColor:"黄", pattern:"", iridophore:"", bodyType:"ダルマ", finVariation:"", eyeVariation:"" },
+      refTags: ["ハウスネーム"],
+      lineage: { strain:"要確認", parentIds:[] },
+      origin: { breeder:"調査中", year:"調査中", story:"" },
+      description: "黄色のダルマ体型（丸く短い体型）のメダカです。めだかの館で扱われるハウスネーム品種で、作出者・作出年や詳しい特徴などの公開情報が少なく、現在調査中です。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://www.medakanoyakata.jp/?pid=192658079", caption:"参考：フロストイエローダルマ（めだかの館）", credit:"めだかの館", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: [],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m039" },
+      sources: [ { url:"https://www.medakanoyakata.jp/?pid=192658079", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m040", name: "紗々", reading: "さしゃ", aliases: ["白透明鱗ブラックリム"], status: "done",
+      phenotype: { bodyColor:"ピュアホワイト(白)", pattern:"無地", iridophore:"", bodyType:"普通体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: ["ブラックリム","透明鱗"],
+      lineage: { strain:"五式typeR系", parentIds:[] },
+      origin: { breeder:"チャチャめだか", year:"2020年",
+        story:"「五式typeR」系から白い体色を固定して生まれた品種で、2020年にチャチャめだかによって作出されました。飼育難易度や固定率については調査中です。" },
+      description: "紗々は、白い体に強い「ブラックリム」（鱗の黒い縁取り）が入る品種です。背景の色に反応して色が薄くなる「背地反応」が少ないため、白い容器で飼っても黒い縁取りが退色しにくいのが特徴です。頭やヒレに白がのり、涼しげで凛とした美しさがあります。",
+      care: { difficulty:2, points:["白容器でもブラックリムが退色しにくい","背地反応が少なく扱いやすいとされる"] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0904_sasya/", caption:"参考：紗々 No.0904（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: [],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m040" },
+      sources: [ { url:"https://medakazukan.net/0904_sasya/", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m041", name: "神紅玉錦", reading: "しんこうぎょくにしき", aliases: [], status: "draft",
+      phenotype: { bodyColor:"", pattern:"錦", iridophore:"", bodyType:"", finVariation:"", eyeVariation:"" },
+      refTags: ["ハウスネーム"],
+      lineage: { strain:"要確認", parentIds:[] },
+      origin: { breeder:"調査中", year:"調査中", story:"" },
+      description: "めだかの館で扱われるハウスネーム品種です。公開されている情報がほとんどなく、体色や作出の詳細は現在調査中です。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://www.medakanoyakata.jp/?pid=192658073", caption:"参考：神紅玉錦（めだかの館）", credit:"めだかの館", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: [],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m041" },
+      sources: [ { url:"https://www.medakanoyakata.jp/?pid=192658073", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m042", name: "王華", reading: "おうか", aliases: ["白朱赤ラメ"], status: "done",
+      phenotype: { bodyColor:"", pattern:"二色", iridophore:"ラメ", bodyType:"普通体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: ["ラメ"],
+      lineage: { strain:"白朱赤ラメ", parentIds:["m008"] },
+      origin: { breeder:"岡田卓也（上州めだか）", year:"2020年",
+        story:"「三色ラメ」と「三色体外光」の強いラメ個体、さらに「紅白ラメ」を掛け合わせて生まれた品種で、2020年に上州めだかの岡田卓也氏によって作出されました。" },
+      description: "王華は、白と朱赤（紅白）の二色の体に、背中に密集した強いラメを持つ品種です。従来の紅白ラメと比べ、ラメの幅と密度に優れるとされ、華やかで豪華な印象を与えます。\n\n理想的な紅白の色合いと高密度のラメがそろった個体は生まれる確率が低く、選別には手間がかかるとされています。",
+      care: { difficulty:4, points:["理想の紅白＋高密度ラメの個体は希少で選別に手間がかかる"] },
+      fixation: [ { rate:"低い（理想個体は約20%以下とされる）", source:"medakalog.shop", checkedOn:"2026-07-16" } ],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0896_ouka/", caption:"参考：王華 No.0896（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m008"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m042" },
+      sources: [ { url:"https://medakazukan.net/0896_ouka/", referencedOn:"2026-07-16" }, { url:"https://www.medakalog.shop/ohka/", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m043", name: "フロマージュラメスワロー", reading: "ふろまーじゅらめすわろー", aliases: ["フロマージュ"], status: "done",
+      phenotype: { bodyColor:"黄金", pattern:"", iridophore:"ラメ", bodyType:"普通体型", finVariation:"スワロー", eyeVariation:"なし" },
+      refTags: ["ラメ","スワロー"],
+      lineage: { strain:"エメキン×ブラックダイヤ", parentIds:["m006"] },
+      origin: { breeder:"垂水政治（愛媛）", year:"2023年",
+        story:"「エメキン×ブラックダイヤ」由来の系統から、2023年に愛媛の垂水政治氏によって作出されました。飼育難易度や固定率については調査中です。" },
+      description: "フロマージュラメスワローは、黄金からオレンジがかった体に、白く結晶化したようなフサフサのヒレ（スワロー）を持つ品種です。各ヒレに黄色がよく発現し、その姿がチーズケーキを連想させることから「フロマージュ（フランス語でチーズ）」と名付けられました。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://www.medakanoyakata.jp/?pid=192647200", caption:"参考：フロマージュラメスワロー（めだかの館）", credit:"めだかの館", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m006"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m043" },
+      sources: [ { url:"https://www.medakanoyakata.jp/?pid=192647200", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m044", name: "オロチダルマ", reading: "おろちだるま", aliases: ["オロチ半ダルマ"], status: "done",
+      phenotype: { bodyColor:"オロチ", pattern:"無地", iridophore:"なし", bodyType:"ダルマ", finVariation:"なし", eyeVariation:"なし" },
+      refTags: [],
+      lineage: { strain:"オロチ系", parentIds:["m005"] },
+      origin: { breeder:"谷國昌博（飛鳥めだか）※オロチ本体", year:"不明（オロチ本体は2016年）",
+        story:"オロチ本体は2016年に飛鳥めだかの谷國昌博氏が作出しました。そのダルマ体型版で、組み合わせとしての作出年は調査中です。" },
+      description: "オロチダルマは、漆黒で背地反応のない「オロチ」を、ダルマ体型（体長が通常の約半分の丸く短い体型）にした品種です。目やヒレまで黒く、白い容器に入れても黒が落ちない、まん丸で真っ黒な愛らしい姿が魅力です。丈夫で飼いやすい品種でもあります。",
+      care: { difficulty:2, points:["丈夫で初心者向け","白容器でも黒が落ちない","ダルマ体型は水温変化に注意"] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0830_orochidharma/", caption:"参考：オロチダルマ No.0830（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m005"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m044" },
+      sources: [ { url:"https://medakazukan.net/0830_orochidharma/", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m045", name: "さくら", reading: "さくら", aliases: ["さくら（ショート）"], status: "done",
+      phenotype: { bodyColor:"ピンク", pattern:"", iridophore:"ラメ", bodyType:"", finVariation:"なし", eyeVariation:"なし" },
+      refTags: ["ラメ"],
+      lineage: { strain:"ピンクサファイア系", parentIds:[] },
+      origin: { breeder:"不明", year:"不明",
+        story:"ピンクサファイア系から生まれた品種です。作出者・作出年は調査中です。" },
+      description: "さくらは、桜の花びらを思わせる淡いピンクの体に、ピンクや青など暖色・冷色が混ざる強いラメを持つ品種です。上から見た（上見）ときのラメの輝きが美しく、ヒレもピンクに染まります。短く丸みのある体型（ショート）が愛らしい印象を与えます。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://www.medakanoyakata.jp/?pid=192647196", caption:"参考：さくら（ショート）（めだかの館）", credit:"めだかの館", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: [],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m045" },
+      sources: [ { url:"https://www.medakanoyakata.jp/?pid=192647196", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m046", name: "碧", reading: "へき", aliases: ["あおい"], status: "done",
+      phenotype: { bodyColor:"スカイブルー(青)", pattern:"無地", iridophore:"ラメ", bodyType:"普通体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: ["ラメ"],
+      lineage: { strain:"青系", parentIds:[] },
+      origin: { breeder:"不明", year:"不明",
+        story:"青系の品種ですが、作出者・作出年は調査中です。" },
+      description: "碧（へき）は、青い体に質の良い青ラメがよく発現する品種です。落ち着いた青の地色にラメの輝きが映える、涼しげな美しさがあります。",
+      care: { difficulty:null, points:[] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://www.medakanoyakata.jp/?pid=192647195", caption:"参考：碧（めだかの館）", credit:"めだかの館", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: [],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m046" },
+      sources: [ { url:"https://www.medakanoyakata.jp/?pid=192647195", referencedOn:"2026-07-16" } ]
     }
 
   ]
