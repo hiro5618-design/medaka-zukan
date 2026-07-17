@@ -152,6 +152,43 @@
     return f ? f.name : id;
   }
 
+  /* ---------- 相場（価格） ---------- */
+  var PRICES = (window.MEDAKA_PRICES && window.MEDAKA_PRICES.records) || [];
+  function yen(n){ return (n==null) ? "—" : "¥" + Number(n).toLocaleString("ja-JP"); }
+  function latestPrice(id){
+    var rs = PRICES.filter(function(r){ return r.id === id; });
+    if(!rs.length) return null;
+    rs.sort(function(a,b){ return a.checkedOn < b.checkedOn ? 1 : -1; });
+    return rs[0];
+  }
+  function priceSection(m){
+    var r = latestPrice(m.id);
+    if(!r){
+      return '<div class="detail-section"><h3>相場</h3>'+
+             '<p class="empty">まだ価格データがありません（収集前）</p></div>';
+    }
+    var STAGES = [["egg","卵"],["fry","針子"],["adult","成魚"]];
+    var rows = STAGES.map(function(s){
+      var d = r.stages && r.stages[s[0]];
+      if(!d || !d.count){
+        return '<tr><th>'+s[1]+'</th><td colspan="5"><span class="empty">データなし</span></td></tr>';
+      }
+      var minCell = d.minUrl
+        ? '<a class="src-link" href="'+esc(d.minUrl)+'" target="_blank" rel="noopener">'+yen(d.min)+'</a>'
+        : yen(d.min);
+      return '<tr><th>'+s[1]+'</th><td>'+minCell+'</td><td>'+yen(d.avg)+'</td><td>'+yen(d.max)+
+             '</td><td>'+d.count+'件</td><td class="ref-note">'+esc(d.note||"")+'</td></tr>';
+    }).join("");
+    return '<div class="detail-section"><h3>相場</h3>'+
+      '<table class="spec-table price-table">'+
+        '<tr><th></th><th>最安</th><th>平均</th><th>最高</th><th>件数</th><th>備考</th></tr>'+
+        rows+
+      '</table>'+
+      '<div class="ref-note">出所：<a class="src-link" href="'+esc(r.searchUrl)+'" target="_blank" rel="noopener">'+
+        esc(r.source)+'</a> ／ 調査日：'+esc(r.checkedOn)+'（参考価格。数量・サイズは出品により異なります）</div>'+
+    '</div>';
+  }
+
   function openDetail(m){
     var p = m.phenotype || {};
     var o = m.origin || {};
@@ -211,6 +248,8 @@
         '<div class="detail-section"><h3>飼育のポイント</h3>'+
           ((care.points&&care.points.length)?'<ul>'+care.points.map(function(x){return '<li>'+esc(x)+'</li>';}).join("")+'</ul>':'<p class="empty">調査中</p>')+
         '</div>'+
+
+        priceSection(m)+
 
         (similar?'<div class="detail-section"><h3>類似する品種</h3><p>'+similar+'</p></div>':'')+
 

@@ -1,3 +1,6 @@
+# APIキー・アプリID（公開リポジトリなので絶対にコミットしない）
+tools/rakuten_app_id.txt
+
 # クローラの実行時ファイル（公開不要・端末ごとに生成される）
 tools/inbox.json
 tools/inbox.md

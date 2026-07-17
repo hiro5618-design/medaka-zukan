@@ -109,6 +109,9 @@ body{
   text-align:left; padding:7px 10px; border-bottom:1px solid var(--border);
   vertical-align:top}
 .spec-table th{width:34%; color:var(--muted); font-weight:600}
+.price-table th{width:auto; white-space:nowrap}
+.price-table th,.price-table td{padding:6px 8px; font-size:.84rem; font-variant-numeric:tabular-nums}
+.price-table tr th:first-child{width:4.5em; color:var(--text); font-weight:700}
 .detail-section{margin:16px 0}
 .detail-section h3{font-size:1rem; margin:0 0 6px;
   border-left:4px solid var(--accent); padding-left:8px}
