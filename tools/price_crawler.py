@@ -6,10 +6,13 @@ price_crawler.py  ―― 相場（価格）収集スクリプト
 出品タイトルから 卵 / 針子 / 成魚 を判定して、ステージ別に
 最安・平均・最高・件数を集計 → data/price-history.js に追記します。
 
-【アプリIDの設定（どちらか）】
-  1) 環境変数  RAKUTEN_APP_ID=xxxxxxxx
-  2) ファイル  tools/rakuten_app_id.txt に アプリID だけを書いて保存
-  ※ このリポジトリは公開なので、アプリIDは .gitignore で除外されます（絶対にコミットしない）
+【認証情報の設定（2026年2月の楽天API刷新後は2つ必要）】
+  1) アプリケーションID（UUID形式）
+       環境変数 RAKUTEN_APP_ID か、tools/rakuten_app_id.txt に保存
+  2) アクセスキー（pk_ で始まる文字列）
+       環境変数 RAKUTEN_ACCESS_KEY か、tools/rakuten_access_key.txt に保存
+  ※ このリポジトリは公開なので、両ファイルとも .gitignore で除外されます（絶対にコミットしない）
+  ※ 旧API（app.rakuten.co.jp）は2026-05-14に停止済み。本スクリプトは新API対応版。
 
 【使い方】
   python price_crawler.py                # 全品種
@@ -22,20 +25,26 @@ from datetime import datetime, timezone, timedelta
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, "..", "data")
 JST  = timezone(timedelta(hours=9))
-API  = "https://app.rakuten.co.jp/services/api/IchibaItem/Search/20220601"
+API  = "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/20220601"
 
 def today():
     return datetime.now(JST).strftime("%Y-%m-%d")
 
-# ---- アプリID読み込み ----
-def load_app_id():
-    v = os.environ.get("RAKUTEN_APP_ID", "").strip()
+# ---- 認証情報読み込み（アプリケーションID＋アクセスキー） ----
+def _load_secret(env_name, file_name):
+    v = os.environ.get(env_name, "").strip()
     if v:
         return v
-    p = os.path.join(HERE, "rakuten_app_id.txt")
+    p = os.path.join(HERE, file_name)
     if os.path.exists(p):
         return open(p, encoding="utf-8").read().strip()
     return ""
+
+def load_app_id():
+    return _load_secret("RAKUTEN_APP_ID", "rakuten_app_id.txt")
+
+def load_access_key():
+    return _load_secret("RAKUTEN_ACCESS_KEY", "rakuten_access_key.txt")
 
 # ---- 品種一覧（id, name）を medaka-data.js から取得 ----
 def load_varieties():
@@ -70,21 +79,25 @@ STAGE_NOTE = {
 }
 
 # ---- 楽天API検索 ----
-def search(app_id, keyword, hits=30):
+def search(app_id, access_key, keyword, hits=30):
     q = urllib.parse.urlencode({
-        "applicationId": app_id, "keyword": keyword,
+        "applicationId": app_id, "accessKey": access_key, "keyword": keyword,
         "hits": hits, "format": "json", "formatVersion": 2,
     })
     req = urllib.request.Request(API + "?" + q, headers={"User-Agent": "MedakaZukanBot/1.0"})
     with urllib.request.urlopen(req, timeout=25) as r:
         return json.loads(r.read().decode("utf-8", "ignore"))
 
+def clean_url(url):
+    """楽天が付けるトラッキングパラメータ（rafcid等。アプリIDを含む）を除去する"""
+    return url.split("?")[0]
+
 def aggregate(items):
     buckets = {"egg": [], "fry": [], "adult": []}
     for it in items:
         name = it.get("itemName", "")
         price = it.get("itemPrice")
-        url = it.get("itemUrl", "")
+        url = clean_url(it.get("itemUrl", ""))
         st = classify(name)
         if st and isinstance(price, int) and price > 0:
             buckets[st].append((price, url))
@@ -136,9 +149,14 @@ def save_records(records):
 
 def main():
     app_id = load_app_id()
+    access_key = load_access_key()
     if not app_id:
-        print("ERROR: Rakuten app id not found.")
+        print("ERROR: Rakuten application id not found.")
         print("  -> set env RAKUTEN_APP_ID, or create tools/rakuten_app_id.txt")
+        sys.exit(1)
+    if not access_key:
+        print("ERROR: Rakuten access key not found.")
+        print("  -> set env RAKUTEN_ACCESS_KEY, or create tools/rakuten_access_key.txt")
         sys.exit(1)
 
     targets = load_varieties()
@@ -157,7 +175,7 @@ def main():
     for vid, name in targets:
         kw = "メダカ " + name
         try:
-            res = search(app_id, kw)
+            res = search(app_id, access_key, kw)
             items = res.get("Items", []) if isinstance(res, dict) else []
             stages = aggregate(items)
             total = sum(s["count"] for s in stages.values())
