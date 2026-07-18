@@ -64,9 +64,9 @@ window.MEDAKA_PRICES = {
       },
       "adult": {
         "min": 690,
-        "avg": 1578,
+        "avg": 1604,
         "max": 2980,
-        "count": 8,
+        "count": 9,
         "minUrl": "https://item.rakuten.co.jp/chanet/13585/",
         "note": "匹数・サイズは出品により異なります"
       }
@@ -79,11 +79,11 @@ window.MEDAKA_PRICES = {
     "searchUrl": "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E7%99%BD%E3%83%A1%E3%83%80%E3%82%AB/",
     "stages": {
       "egg": {
-        "min": null,
-        "avg": null,
-        "max": null,
-        "count": 0,
-        "minUrl": "",
+        "min": 700,
+        "avg": 700,
+        "max": 700,
+        "count": 1,
+        "minUrl": "https://item.rakuten.co.jp/auc-medakaen/10000265/",
         "note": "数量（10個入り等）は出品により異なります"
       },
       "fry": {
@@ -95,11 +95,11 @@ window.MEDAKA_PRICES = {
         "note": "匹数は出品により異なります"
       },
       "adult": {
-        "min": 750,
-        "avg": 2354,
-        "max": 5175,
-        "count": 10,
-        "minUrl": "https://item.rakuten.co.jp/chanet/16120/",
+        "min": 700,
+        "avg": 2533,
+        "max": 8000,
+        "count": 12,
+        "minUrl": "https://item.rakuten.co.jp/auc-medakaen/10000005/",
         "note": "匹数・サイズは出品により異なります"
       }
     }
@@ -496,9 +496,9 @@ window.MEDAKA_PRICES = {
     "stages": {
       "egg": {
         "min": 980,
-        "avg": 1464,
+        "avg": 1433,
         "max": 1880,
-        "count": 5,
+        "count": 6,
         "minUrl": "https://item.rakuten.co.jp/wga7/mixyuuseiran20/",
         "note": "数量（10個入り等）は出品により異なります"
       },
@@ -512,9 +512,9 @@ window.MEDAKA_PRICES = {
       },
       "adult": {
         "min": 980,
-        "avg": 2008,
+        "avg": 2075,
         "max": 3500,
-        "count": 14,
+        "count": 13,
         "minUrl": "https://item.rakuten.co.jp/chanet/581829/",
         "note": "匹数・サイズは出品により異なります"
       }
