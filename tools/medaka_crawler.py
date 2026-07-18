@@ -62,6 +62,7 @@ def clean(t):
 # ---- タイトル→品種名の抽出 ----
 def extract_name(title, mode):
     t = clean(title)
+    t = re.sub(r"[＜<][^＜<＞>]*[＞>]", "", t).strip()   # ＜通常価格〇〇円＞等の装飾を除去
     if mode == "toha":
         m = re.match(r"^(.*?)とは", t)
         return m.group(1).strip() if m else None

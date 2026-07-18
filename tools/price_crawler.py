@@ -46,15 +46,19 @@ def load_app_id():
 def load_access_key():
     return _load_secret("RAKUTEN_ACCESS_KEY", "rakuten_access_key.txt")
 
-# ---- 品種一覧（id, name）を medaka-data.js から取得 ----
+# ---- 品種一覧（id, name, aliases）を medaka-data.js から取得 ----
 def load_varieties():
     txt = open(os.path.join(DATA, "medaka-data.js"), encoding="utf-8").read()
     out = []
-    for m in re.finditer(r'id:\s*"(m\d{3})",\s*name:\s*"([^"]+)"', txt):
-        vid, name = m.group(1), m.group(2)
+    pat = re.compile(
+        r'id:\s*"(m\d{3})",\s*name:\s*"([^"]+)",\s*reading:\s*"[^"]*",\s*aliases:\s*\[([^\]]*)\]',
+        re.S)
+    for m in pat.finditer(txt):
+        vid, name, al = m.group(1), m.group(2), m.group(3)
         if vid == "m000":
             continue
-        out.append((vid, name))
+        aliases = re.findall(r'"([^"]+)"', al)
+        out.append((vid, name, aliases))
     return out
 
 # ---- ステージ判定 ----
@@ -172,13 +176,25 @@ def main():
     existing = {key(r): i for i, r in enumerate(records)}
 
     added, errors, d = 0, [], today()
-    for vid, name in targets:
+    for vid, name, aliases in targets:
         kw = "メダカ " + name
         try:
             res = search(app_id, access_key, kw)
             items = res.get("Items", []) if isinstance(res, dict) else []
             stages = aggregate(items)
             total = sum(s["count"] for s in stages.values())
+            # 品種名で0件なら別名で再検索（最初にヒットした別名を採用）
+            if total == 0:
+                for alt in aliases:
+                    time.sleep(1.2)
+                    kw2 = "メダカ " + alt
+                    res = search(app_id, access_key, kw2)
+                    items = res.get("Items", []) if isinstance(res, dict) else []
+                    st2 = aggregate(items)
+                    if sum(s["count"] for s in st2.values()) > 0:
+                        stages, kw = st2, kw2
+                        total = sum(s["count"] for s in stages.values())
+                        break
             rec = {
                 "id": vid, "checkedOn": d, "source": "楽天市場",
                 "searchUrl": "https://search.rakuten.co.jp/search/mall/" + urllib.parse.quote(kw) + "/",

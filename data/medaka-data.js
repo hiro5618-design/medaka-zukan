@@ -824,6 +824,166 @@ window.MEDAKA_DATA = {
       similarIds: [],
       genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m046" },
       sources: [ { url:"https://www.medakanoyakata.jp/?pid=192647195", referencedOn:"2026-07-16" } ]
+    },
+
+    {
+      id: "m047", name: "東天光", reading: "とうてんこう", aliases: ["楊貴妃ヒカリ"], status: "done",
+      phenotype: { bodyColor:"楊貴妃(朱赤)", pattern:"無地", iridophore:"ヒカリ体型由来の光沢", bodyType:"ヒカリ体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: [],
+      lineage: { strain:"楊貴妃系統", parentIds:["m004"] },
+      origin: { breeder:"大場幸雄（めだかの館）", year:"2005年",
+        story:"2005年に大場幸雄氏が作出したとされています。楊貴妃の固定化を進める過程で、朱赤のヒカリ体型の個体が生まれ、それを選抜・固定して東天光となりました。名前は「東天紅」の「紅」を「光」に変えたもので、背中のグアニンの輝きが日の出を思わせることに由来するとされています。" },
+      description: "朱赤ヒカリ体型のメダカ品種で、楊貴妃系統から生まれました。ヒカリ体型とは、背びれと尻びれが同じような形になり、尾びれがひし形になる体型のことです。背中にはグアニンという光沢物質があり、上から見ると強く輝いて見えるのが最大の魅力です。\n\n体は丈夫で、初心者にも飼いやすい品種とされています。固定率（親と同じ特徴の子が生まれる割合）は99%以上とされ、累代しても安定して同じ姿の個体が生まれやすいです。ただし背骨が曲がった個体が出ることがあるため、選別の際には避けるようにします。",
+      care: { difficulty:1, points:["丈夫で初心者向け","上見でグアニンの光沢が際立つ","骨曲がり個体は選別で避ける"] },
+      fixation: [ { rate:"99%以上", source:"改良メダカWEB図鑑 No.0002", checkedOn:"2026-07-18" } ],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0002_totenko/", caption:"参考：東天光 No.0002（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m004"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m047" },
+      sources: [ { url:"https://medakazukan.net/0002_totenko/", referencedOn:"2026-07-18" } ]
+    },
+
+    {
+      id: "m048", name: "初恋", reading: "はつこい", aliases: ["楊貴妃ダルマ"], status: "done",
+      phenotype: { bodyColor:"楊貴妃(朱赤)", pattern:"無地", iridophore:"なし", bodyType:"ダルマ", finVariation:"なし", eyeVariation:"なし" },
+      refTags: [],
+      lineage: { strain:"楊貴妃系統", parentIds:["m004"] },
+      origin: { breeder:"大場幸雄（めだかの館）", year:"2005年",
+        story:"2005年に大場幸雄氏が作出したとされています。楊貴妃の系統からダルマ体型の個体が生まれ、これを累代して固定したのが初恋です。名前は、来店したお客様が「初めてメダカに恋をした」と話したことに由来するとされています。" },
+      description: "朱赤ダルマ体型のメダカ品種で、楊貴妃系統から生まれました。ダルマ体型とは背骨の一部が短くなった体型のことで、体長は普通のメダカの半分ほどしかなく、丸くて愛嬌のある姿と独特の泳ぎ方が魅力です。\n\n水温や水質の変化にはやや敏感とされ、転覆しやすいこともあるため単独飼育がすすめられています。ダルマ同士を交配しても普通体型・半ダルマ・ダルマが混ざって生まれ、完全には固定しません。高水温になるほどダルマの出現率が上がるとされています。",
+      care: { difficulty:3, points:["高水温でダルマ出現率が上がる","水温・水質の変化にやや敏感","転覆しやすく単種飼育が無難"] },
+      fixation: [ { rate:"50%以上", source:"改良メダカWEB図鑑 No.0003", checkedOn:"2026-07-18" } ],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0003_hatsukoi/", caption:"参考：初恋 No.0003（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m004"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m048" },
+      sources: [ { url:"https://medakazukan.net/0003_hatsukoi/", referencedOn:"2026-07-18" } ]
+    },
+
+    {
+      id: "m049", name: "ピュアホワイト", reading: "ぴゅあほわいと", aliases: ["ミルキー"], status: "done",
+      phenotype: { bodyColor:"ピュアホワイト(白)", pattern:"無地", iridophore:"なし", bodyType:"普通体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: [],
+      lineage: { strain:"ミルキー系統", parentIds:["m002"] },
+      origin: { breeder:"大場幸雄（めだかの館）", year:"2003年",
+        story:"2003年に大場幸雄氏が作出したとされています。数千匹の中からオスのミルキー個体を見出し、これを反復して交配を重ねることで、雌雄ともに安定して純白が生まれる系統として確立されました。" },
+      description: "高い純白性を持つ白メダカ品種で、ミルキー系統から生まれました。黄色素胞（黄色を出す色素細胞）が完全に欠如しているため、従来の白メダカに出やすいクリーム色を帯びることがなく、雌雄ともに安定した純白の体色になるのが特徴です。\n\n飼育は一般的な白メダカと同様に容易とされています。固定率は99%以上とされ、累代しても純白の特徴が安定して受け継がれます。暗い色の容器や水草を背景にすると、白さがより一層際立って見えます。",
+      care: { difficulty:2, points:["丈夫で飼いやすい","暗色容器や水草で白が映える","黄色素胞がなくクリーム色を帯びない"] },
+      fixation: [ { rate:"99%以上", source:"改良メダカWEB図鑑", checkedOn:"2026-07-18" } ],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0007_purewhite/", caption:"参考：ピュアホワイト（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m002"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m049" },
+      sources: [ { url:"https://medakazukan.net/0007_purewhite/", referencedOn:"2026-07-18" } ]
+    },
+
+    {
+      id: "m050", name: "スカイブルー", reading: "すかいぶるー", aliases: ["青メダカ"], status: "done",
+      phenotype: { bodyColor:"スカイブルー(青)", pattern:"無地", iridophore:"なし", bodyType:"普通体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: [],
+      lineage: { strain:"青メダカ系", parentIds:[] },
+      origin: { breeder:"大場幸雄（めだかの館）", year:"2004年",
+        story:"2004年に大場幸雄氏が作出したとされています。野生型由来の青系統を発展させ、オスとメスがそろって鮮やかなパールブルーになるよう改良を重ねて生まれました。" },
+      description: "青色を代表するメダカ品種で、野生型（茶系）から黄色素胞が欠けた青系統がさらに発展して生まれました。黒色素胞と白色素胞の配置によって濃淡に奥行きが生まれ、群れで泳がせると涼しげな印象を与えます。\n\n従来の青メダカはオスが灰色っぽく、メスがパールブルーというように雌雄で色合いが異なっていましたが、スカイブルーはオスにも明るいパールブルーを遺伝させることに世界で初めて成功したとされています。飼育は容易とされていますが、固定率については分かっていません。",
+      care: { difficulty:2, points:["丈夫で飼いやすい","雌雄そろって明るいパールブルー","群泳させると涼しげ"] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0059_skyblue/", caption:"参考：スカイブルー（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m003","m016"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m050" },
+      sources: [ { url:"https://medakazukan.net/0059_skyblue/", referencedOn:"2026-07-18" } ]
+    },
+
+    {
+      id: "m051", name: "ブラック", reading: "ぶらっく", aliases: ["小川ブラック"], status: "done",
+      phenotype: { bodyColor:"ブラック", pattern:"無地", iridophore:"なし", bodyType:"普通体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: [],
+      lineage: { strain:"ブラック系統", parentIds:[] },
+      origin: { breeder:"小川祝治（発見）／堀田祐二（育成）※諸説あり", year:"2009年",
+        story:"2009年に小川祝治氏が見出した黒っぽい個体を、堀田祐二氏が選別・育成して生まれたとされています。ただし作出者に関する記述は情報源によって幅があり、詳しい経緯は調査中です。" },
+      description: "黒色を代表するメダカ品種で、別名「小川ブラック」とも呼ばれます。最大の特徴は「背地反応」（周囲の明るさに合わせて体色が薄くなる反応）がほとんどないことで、白い容器に入れても黒さを保ち続けます。\n\n屋外で日光を浴びせると黒の質がより上がるとされています。選別の際には、白い容器に1日入れてもなお黒さを保つ個体を選びます。飼育は容易とされていますが、固定率は分かっていません。",
+      care: { difficulty:2, points:["背地反応がなく白容器でも黒い","屋外の日光で黒の質が上がる","白容器で黒を保つ個体を選別"] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0019_black/", caption:"参考：ブラック No.0019（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m005","m006"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m051" },
+      sources: [ { url:"https://medakazukan.net/0019_black/", referencedOn:"2026-07-18" } ]
+    },
+
+    {
+      id: "m052", name: "銀河", reading: "ぎんが", aliases: ["シルバーヒカリ"], status: "done",
+      phenotype: { bodyColor:"スカイブルー(青)", pattern:"無地", iridophore:"ヒカリ体型由来の光沢", bodyType:"ヒカリ体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: [],
+      lineage: { strain:"青パール系統", parentIds:[] },
+      origin: { breeder:"大場幸雄（めだかの館）", year:"2005年",
+        story:"2005年に大場幸雄氏が作出したとされています。ヒカリ体型の腹部にある虹色素胞の輝きを強化する改良を重ね、青い体にグアニンの銀の輝きを重ねた品種として生まれました。" },
+      description: "青ヒカリ体型のメダカ品種で、青パール系統から生まれました。ヒカリ体型とは背びれと尻びれが同じような形になる体型のことで、腹部の虹色素胞（光を反射する色素細胞）の輝きが強化されているのが特徴です。青い体にグアニン（光沢物質）による銀色の輝きが重なり、質の良い個体は文字通り銀色に輝いて見えます。\n\n頭部と尾びれには黄色が差し色として入り、青と黄色の二色配色も魅力の一つです。飼育は容易とされ、屋外で自然光を浴びると光沢がより美しく映えます。固定率については分かっていません。",
+      care: { difficulty:2, points:["丈夫で飼いやすい","青の体に頭・尾ビレの黄が差し色","屋外・自然光で光沢が映える"] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0063_ginga/", caption:"参考：銀河 No.0063（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m047","m050"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m052" },
+      sources: [ { url:"https://medakazukan.net/0063_ginga/", referencedOn:"2026-07-18" } ]
+    },
+
+    {
+      id: "m053", name: "白幹之", reading: "しろみゆき", aliases: ["白青幹之","白体外光"], status: "done",
+      phenotype: { bodyColor:"ピュアホワイト(白)", pattern:"無地", iridophore:"体外光(幹之)", bodyType:"普通体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: ["体外光"],
+      lineage: { strain:"幹之系統", parentIds:["m003"] },
+      origin: { breeder:"菅高志", year:"2007年ごろ",
+        story:"2007年ごろに菅高志氏が作出したとされています。幹之系統の中から白い体色に体外光が乗る個体が生まれ、これを選別・固定して白幹之となったとされていますが、詳しい経緯は調査中です。" },
+      description: "白い体色に体外光（背中に沿って走る光の帯）が乗る、幹之系統のメダカ品種です。光の強さによって弱光・強光・スーパー光・極光といったグレードに分けられ、光の伸び方や強さを楽しむ品種として人気があります。\n\n白い容器で飼育すると光が強く出やすく、逆に黒い容器では光が目立ちにくくなることがあるとされています。また、水温が30℃前後と高めのほうが体外光が伸びやすいとされています。固定率は非公表ですが、幹之系全般では9割以上が親に似るとの報告があります。飼育は容易とされています。",
+      care: { difficulty:2, points:["白容器で体外光が強く出やすい","高水温だと体外光が伸びやすい","黒容器では光が目立ちにくい"] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0104_siromiyuki/", caption:"参考：白幹之 No.0104（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m003"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m053" },
+      sources: [ { url:"https://medakazukan.net/0104_siromiyuki/", referencedOn:"2026-07-18" } ]
+    },
+
+    {
+      id: "m054", name: "マリンブルー", reading: "まりんぶるー", aliases: [], status: "done",
+      phenotype: { bodyColor:"スカイブルー(青)", pattern:"無地", iridophore:"体外光(幹之)", bodyType:"普通体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: ["体外光"],
+      lineage: { strain:"青幹之系統", parentIds:["m003"] },
+      origin: { breeder:"長岡龍聖", year:"2011年",
+        story:"2011年に長岡龍聖氏が作出したとされています。青幹之の中から黒色素胞が少なく「水のような体色」を持つ個体を見出し、白幹之との交配を経てマリンブルーが生まれたとされています。同じ長岡氏による品種「深海」と近い系統とされますが、両者の前後関係については情報源により記述に幅があります。" },
+      description: "明るい青色の体色に体外光が乗り、腹膜（お腹の内側の膜）が青く輝くのが最大の特徴のメダカ品種です。青幹之系統から生まれました。濃い色の容器で飼育すると保護色によって黒ずみ、別の品種のように見えてしまうことがあるため、白い容器での飼育がすすめられています。\n\n体外光や腹膜の色の出方には個体差があり、良い個体を残すには選別が重要とされています。固定率は非公表です。",
+      care: { difficulty:3, points:["白容器での飼育が必須（濃色容器で黒ずむ）","腹膜の青い輝きが特徴","体外光・腹膜の色は個体差があり選別が重要"] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0016_marineblue/", caption:"参考：マリンブルー No.0016（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m016","m050"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m054" },
+      sources: [ { url:"https://medakazukan.net/0016_marineblue/", referencedOn:"2026-07-18" } ]
+    },
+
+    {
+      id: "m055", name: "ピンク", reading: "ぴんく", aliases: ["ピンクメダカ","桃色メダカ"], status: "done",
+      phenotype: { bodyColor:"ピンク", pattern:"無地", iridophore:"なし", bodyType:"普通体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: [],
+      lineage: { strain:"朱赤（楊貴妃）系", parentIds:["m004"] },
+      origin: { breeder:"不明", year:"不明（2003年には流通）",
+        story:"作出者・作出年ともに調査中ですが、2003年には既に流通していたとの記述があります。朱赤系の体色に白色素胞を発達させる遺伝子が働いたことでピンク色が生まれたとされています。" },
+      description: "桃色を基本とするメダカ品種で、朱赤（楊貴妃）系の体色に白色素胞を発達させるci遺伝子が働くことでピンク色が表れるとされています。ヒレに朱赤の名残が出る個体もあり、体とヒレの色の違いも見どころの一つです。\n\n白メダカとの境界ははっきりせず、ピンクがかった白から白っぽいピンクまで幅があります。流通量は意外に多くなく、可愛らしい色合いから人気がある品種です。小春やピンク錦といった派生品種の基礎にもなっています。飼育は他のメダカと同様で難しくありません。固定率については分かっていません。",
+      care: { difficulty:2, points:["飼育は他のメダカと同様で容易","ヒレに朱赤の名残が出ることがある","白メダカとの境界は連続的"] },
+      fixation: [],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0031_pink/", caption:"参考：ピンク No.0031（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m002","m029"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m055" },
+      sources: [ { url:"https://medakazukan.net/0031_pink/", referencedOn:"2026-07-18" }, { url:"https://medakazukan.net/blog007/", referencedOn:"2026-07-18" } ]
+    },
+
+    {
+      id: "m056", name: "紅白ラメ", reading: "こうはくらめ", aliases: ["白朱赤ラメ"], status: "done",
+      phenotype: { bodyColor:"楊貴妃(朱赤)", pattern:"二色", iridophore:"ラメ", bodyType:"普通体型", finVariation:"なし", eyeVariation:"なし" },
+      refTags: ["ラメ"],
+      lineage: { strain:"三色ラメ幹之系統（オーロラ系）", parentIds:["m007"] },
+      origin: { breeder:"静楽庵（岡山県）", year:"2016年",
+        story:"2016年に静楽庵（岡山県）が作出したとされています。三色ラメ幹之の中から、黒いブチ模様が入らない個体を選抜して累代・固定したのが紅白ラメです。" },
+      description: "白と朱赤の二色に、鱗の一枚一枚がラメのように輝く多色ラメが加わったメダカ品種です。オーロラ系の血を引く三色ラメ幹之系統から生まれました。非透明鱗のため白色がはっきりと発色し、紅白の縁起の良い柄とラメの輝きを併せ持つのが魅力です。\n\n明瞭な紅白模様が出る固定率は約10%（静楽庵調べ）とされ、黄色素が出てしまう個体も5〜6割ほどあるため、良い個体を残すには選別が重要です。",
+      care: { difficulty:3, points:["紅白がはっきり出る固定率は低め","黄色素の出現率が高く選別が重要","非透明鱗で白がはっきり発色"] },
+      fixation: [ { rate:"約10%（明瞭な紅白）", source:"静楽庵調べ", checkedOn:"2026-07-18" } ],
+      photos: [ { mode:"link", url:"https://medakazukan.net/0181_kouhakurame/", caption:"参考：紅白ラメ No.0181（改良メダカWEB図鑑）", credit:"改良メダカWEB図鑑", usage:"参照リンクのみ（画像は転載しない）" } ],
+      similarIds: ["m007","m014"],
+      genotype: {}, myRecords: { keeping:[], breeding:[] }, priceRef: { key:"m056" },
+      sources: [ { url:"https://medakazukan.net/0181_kouhakurame/", referencedOn:"2026-07-18" } ]
     }
 
   ]

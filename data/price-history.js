@@ -1479,6 +1479,326 @@ window.MEDAKA_PRICES = {
         "note": "匹数・サイズは出品により異なります"
       }
     }
+  },
+  {
+    "id": "m047",
+    "checkedOn": "2026-07-18",
+    "source": "楽天市場",
+    "searchUrl": "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E6%9D%B1%E5%A4%A9%E5%85%89/",
+    "stages": {
+      "egg": {
+        "min": 1000,
+        "avg": 1253,
+        "max": 1480,
+        "count": 3,
+        "minUrl": "https://item.rakuten.co.jp/auc-medakaen/10000267/",
+        "note": "数量（10個入り等）は出品により異なります"
+      },
+      "fry": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "count": 0,
+        "minUrl": "",
+        "note": "匹数は出品により異なります"
+      },
+      "adult": {
+        "min": 1060,
+        "avg": 3348,
+        "max": 13000,
+        "count": 16,
+        "minUrl": "https://item.rakuten.co.jp/chanet/148523/",
+        "note": "匹数・サイズは出品により異なります"
+      }
+    }
+  },
+  {
+    "id": "m048",
+    "checkedOn": "2026-07-18",
+    "source": "楽天市場",
+    "searchUrl": "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E5%88%9D%E6%81%8B/",
+    "stages": {
+      "egg": {
+        "min": 980,
+        "avg": 980,
+        "max": 980,
+        "count": 1,
+        "minUrl": "https://item.rakuten.co.jp/genkimedaka/compass1748519970/",
+        "note": "数量（10個入り等）は出品により異なります"
+      },
+      "fry": {
+        "min": 5500,
+        "avg": 5500,
+        "max": 5500,
+        "count": 1,
+        "minUrl": "https://item.rakuten.co.jp/medakayanekomanma/hatsukoi-chigyo/",
+        "note": "匹数は出品により異なります"
+      },
+      "adult": {
+        "min": 3300,
+        "avg": 8150,
+        "max": 13000,
+        "count": 2,
+        "minUrl": "https://item.rakuten.co.jp/medakayaen/hatsukoi/",
+        "note": "匹数・サイズは出品により異なります"
+      }
+    }
+  },
+  {
+    "id": "m049",
+    "checkedOn": "2026-07-18",
+    "source": "楽天市場",
+    "searchUrl": "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E3%83%94%E3%83%A5%E3%82%A2%E3%83%9B%E3%83%AF%E3%82%A4%E3%83%88/",
+    "stages": {
+      "egg": {
+        "min": 1280,
+        "avg": 1380,
+        "max": 1480,
+        "count": 2,
+        "minUrl": "https://item.rakuten.co.jp/wga7/sirodarumayuuseiran5/",
+        "note": "数量（10個入り等）は出品により異なります"
+      },
+      "fry": {
+        "min": 1098,
+        "avg": 1319,
+        "max": 1480,
+        "count": 3,
+        "minUrl": "https://item.rakuten.co.jp/gumtree/ourait013/",
+        "note": "匹数は出品により異なります"
+      },
+      "adult": {
+        "min": 528,
+        "avg": 2436,
+        "max": 6980,
+        "count": 15,
+        "minUrl": "https://item.rakuten.co.jp/love-journey/8687-88-89/",
+        "note": "匹数・サイズは出品により異なります"
+      }
+    }
+  },
+  {
+    "id": "m050",
+    "checkedOn": "2026-07-18",
+    "source": "楽天市場",
+    "searchUrl": "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E9%9D%92%E3%83%A1%E3%83%80%E3%82%AB/",
+    "stages": {
+      "egg": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "count": 0,
+        "minUrl": "",
+        "note": "数量（10個入り等）は出品により異なります"
+      },
+      "fry": {
+        "min": 890,
+        "avg": 890,
+        "max": 890,
+        "count": 1,
+        "minUrl": "https://item.rakuten.co.jp/medakastory/10002238/",
+        "note": "匹数は出品により異なります"
+      },
+      "adult": {
+        "min": 440,
+        "avg": 2597,
+        "max": 8000,
+        "count": 20,
+        "minUrl": "https://item.rakuten.co.jp/emuwai/10000684/",
+        "note": "匹数・サイズは出品により異なります"
+      }
+    }
+  },
+  {
+    "id": "m051",
+    "checkedOn": "2026-07-18",
+    "source": "楽天市場",
+    "searchUrl": "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E3%83%96%E3%83%A9%E3%83%83%E3%82%AF/",
+    "stages": {
+      "egg": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "count": 0,
+        "minUrl": "",
+        "note": "数量（10個入り等）は出品により異なります"
+      },
+      "fry": {
+        "min": 980,
+        "avg": 3445,
+        "max": 10000,
+        "count": 4,
+        "minUrl": "https://item.rakuten.co.jp/medakastory/10001898/",
+        "note": "匹数は出品により異なります"
+      },
+      "adult": {
+        "min": 1140,
+        "avg": 3462,
+        "max": 8800,
+        "count": 11,
+        "minUrl": "https://item.rakuten.co.jp/chanet/583933/",
+        "note": "匹数・サイズは出品により異なります"
+      }
+    }
+  },
+  {
+    "id": "m052",
+    "checkedOn": "2026-07-18",
+    "source": "楽天市場",
+    "searchUrl": "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E9%8A%80%E6%B2%B3/",
+    "stages": {
+      "egg": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "count": 0,
+        "minUrl": "",
+        "note": "数量（10個入り等）は出品により異なります"
+      },
+      "fry": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "count": 0,
+        "minUrl": "",
+        "note": "匹数は出品により異なります"
+      },
+      "adult": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "count": 0,
+        "minUrl": "",
+        "note": "匹数・サイズは出品により異なります"
+      }
+    }
+  },
+  {
+    "id": "m053",
+    "checkedOn": "2026-07-18",
+    "source": "楽天市場",
+    "searchUrl": "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E7%99%BD%E5%B9%B9%E4%B9%8B/",
+    "stages": {
+      "egg": {
+        "min": 1200,
+        "avg": 3732,
+        "max": 7180,
+        "count": 5,
+        "minUrl": "https://item.rakuten.co.jp/qewyiy/siromiyuki1/",
+        "note": "数量（10個入り等）は出品により異なります"
+      },
+      "fry": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "count": 0,
+        "minUrl": "",
+        "note": "匹数は出品により異なります"
+      },
+      "adult": {
+        "min": 1400,
+        "avg": 3720,
+        "max": 5250,
+        "count": 5,
+        "minUrl": "https://item.rakuten.co.jp/medakayama/miyuki_taigai/",
+        "note": "匹数・サイズは出品により異なります"
+      }
+    }
+  },
+  {
+    "id": "m054",
+    "checkedOn": "2026-07-18",
+    "source": "楽天市場",
+    "searchUrl": "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E3%83%9E%E3%83%AA%E3%83%B3%E3%83%96%E3%83%AB%E3%83%BC/",
+    "stages": {
+      "egg": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "count": 0,
+        "minUrl": "",
+        "note": "数量（10個入り等）は出品により異なります"
+      },
+      "fry": {
+        "min": 890,
+        "avg": 1758,
+        "max": 2780,
+        "count": 4,
+        "minUrl": "https://item.rakuten.co.jp/medakastory/10001903/",
+        "note": "匹数は出品により異なります"
+      },
+      "adult": {
+        "min": 1580,
+        "avg": 2412,
+        "max": 3500,
+        "count": 5,
+        "minUrl": "https://item.rakuten.co.jp/medakastory/10001950/",
+        "note": "匹数・サイズは出品により異なります"
+      }
+    }
+  },
+  {
+    "id": "m055",
+    "checkedOn": "2026-07-18",
+    "source": "楽天市場",
+    "searchUrl": "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E3%83%94%E3%83%B3%E3%82%AF/",
+    "stages": {
+      "egg": {
+        "min": null,
+        "avg": null,
+        "max": null,
+        "count": 0,
+        "minUrl": "",
+        "note": "数量（10個入り等）は出品により異なります"
+      },
+      "fry": {
+        "min": 1300,
+        "avg": 3850,
+        "max": 6500,
+        "count": 5,
+        "minUrl": "https://item.rakuten.co.jp/chanet/648201/",
+        "note": "匹数は出品により異なります"
+      },
+      "adult": {
+        "min": 1300,
+        "avg": 4930,
+        "max": 11000,
+        "count": 6,
+        "minUrl": "https://item.rakuten.co.jp/chanet/598947/",
+        "note": "匹数・サイズは出品により異なります"
+      }
+    }
+  },
+  {
+    "id": "m056",
+    "checkedOn": "2026-07-18",
+    "source": "楽天市場",
+    "searchUrl": "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E7%B4%85%E7%99%BD%E3%83%A9%E3%83%A1/",
+    "stages": {
+      "egg": {
+        "min": 1200,
+        "avg": 2175,
+        "max": 4000,
+        "count": 4,
+        "minUrl": "https://item.rakuten.co.jp/qewyiy/kouhakura1/",
+        "note": "数量（10個入り等）は出品により異なります"
+      },
+      "fry": {
+        "min": 1580,
+        "avg": 2715,
+        "max": 4000,
+        "count": 8,
+        "minUrl": "https://item.rakuten.co.jp/medakastory/10001807/",
+        "note": "匹数は出品により異なります"
+      },
+      "adult": {
+        "min": 2200,
+        "avg": 6370,
+        "max": 20000,
+        "count": 14,
+        "minUrl": "https://item.rakuten.co.jp/unatorofarm/rmd019/",
+        "note": "匹数・サイズは出品により異なります"
+      }
+    }
   }
 ]
 };

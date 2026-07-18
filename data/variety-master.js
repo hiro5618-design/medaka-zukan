@@ -21,8 +21,8 @@ window.MEDAKA_MASTER = {
 
   list: [
     { fixNo:"0001", name:"楊貴妃",          type:"朱赤",                     note:"", status:"done", mappedId:"m004" },
-    { fixNo:"0002", name:"東天光",          type:"朱赤ヒカリ",               note:"", status:"todo", mappedId:null },
-    { fixNo:"0003", name:"初恋",            type:"朱赤ダルマ",               note:"", status:"todo", mappedId:null },
+    { fixNo:"0002", name:"東天光",          type:"朱赤ヒカリ",               note:"", status:"done", mappedId:"m047" },
+    { fixNo:"0003", name:"初恋",            type:"朱赤ダルマ",               note:"", status:"done", mappedId:"m048" },
     { fixNo:"0004", name:"朱天皇",          type:"朱赤ヒカリダルマ",         note:"", status:"todo", mappedId:null },
     { fixNo:"0005", name:"安芸黄金",        type:"黄金",                     note:"", status:"done", mappedId:"m012" },
     { fixNo:"0006", name:"秀吉",            type:"黄金ヒカリ",               note:"", status:"todo", mappedId:null },
@@ -35,14 +35,14 @@ window.MEDAKA_MASTER = {
     { fixNo:"0012", name:"琴琥",            type:"琥珀ヒカリダルマ",         note:"", status:"todo", mappedId:null },
     { fixNo:"0013", name:"楊貴妃透明鱗",    type:"朱赤透明鱗",               note:"N・D・HD", status:"todo", mappedId:null },
     { fixNo:"0014", name:"紅",              type:"朱赤透明鱗ヒカリ",         note:"別名：篤姫／福系 紅", status:"todo", mappedId:null },
-    { fixNo:"0015", name:"ピュアホワイト",  type:"白",                       note:"N〜HD", status:"todo", mappedId:null },
-    { fixNo:"0023", name:"スカイブルー",    type:"青",                       note:"", status:"todo", mappedId:null },
+    { fixNo:"0015", name:"ピュアホワイト",  type:"白",                       note:"N〜HD", status:"done", mappedId:"m049" },
+    { fixNo:"0023", name:"スカイブルー",    type:"青",                       note:"", status:"done", mappedId:"m050" },
     { fixNo:"0024", name:"ブラック黄金",    type:"ブラック",                 note:"ブラック(ヒレ黄)、背地反応なし", status:"todo", mappedId:null },
-    { fixNo:"0026", name:"ブラック",        type:"ブラック",                 note:"背地反応なし", status:"todo", mappedId:null },
-    { fixNo:"0027", name:"銀河",            type:"青ヒカリ",                 note:"青(ヒレ黄)", status:"todo", mappedId:null },
+    { fixNo:"0026", name:"ブラック",        type:"ブラック",                 note:"背地反応なし", status:"done", mappedId:"m051" },
+    { fixNo:"0027", name:"銀河",            type:"青ヒカリ",                 note:"青(ヒレ黄)", status:"done", mappedId:"m052" },
     { fixNo:"0028", name:"煌",              type:"青ヒカリダルマ",           note:"青(ヒレ黄)", status:"todo", mappedId:null },
     { fixNo:"0044", name:"楊貴妃出目",      type:"朱赤出目",                 note:"", status:"todo", mappedId:null },
-    { fixNo:"0049", name:"白幹之",          type:"白体外光",                 note:"", status:"todo", mappedId:null },
+    { fixNo:"0049", name:"白幹之",          type:"白体外光",                 note:"", status:"done", mappedId:"m053" },
     { fixNo:"0050", name:"青幹之",          type:"青体外光",                 note:"図鑑では『幹之』として登録済み", status:"done", mappedId:"m003" },
     { fixNo:"0053", name:"彩光",            type:"白体内光",                 note:"", status:"todo", mappedId:null },
     { fixNo:"0054", name:"白ラメ幹之",      type:"白ラメ",                   note:"", status:"done", mappedId:"m013" },
@@ -75,9 +75,9 @@ window.MEDAKA_MASTER = {
     { fixNo:"0128", name:"ピンクラメ",      type:"ピンクラメ",               note:"", status:"todo", mappedId:null },
     { fixNo:"0129", name:"オレンジラメ",    type:"オレンジラメ",             note:"", status:"todo", mappedId:null },
     { fixNo:"0130", name:"白錦",            type:"白斑",                     note:"", status:"todo", mappedId:null },
-    { fixNo:"0131", name:"マリンブルー",    type:"青体外光",                 note:"腹膜青。深海の母体", status:"todo", mappedId:null },
+    { fixNo:"0131", name:"マリンブルー",    type:"青体外光",                 note:"腹膜青。深海の母体", status:"done", mappedId:"m054" },
     { fixNo:"0132", name:"深海",            type:"青",                       note:"腹膜青", status:"done", mappedId:"m016" },
-    { fixNo:"0133", name:"ピンク",          type:"ピンク",                   note:"", status:"todo", mappedId:null },
+    { fixNo:"0133", name:"ピンク",          type:"ピンク",                   note:"図鑑記事はNo.0031", status:"done", mappedId:"m055" },
     { fixNo:"0134", name:"小春",            type:"ピンクスワロー",           note:"", status:"todo", mappedId:null },
     { fixNo:"0138", name:"シースルー",      type:"白アルビノ",               note:"シースルー", status:"todo", mappedId:null },
     { fixNo:"0139", name:"ホクト",          type:"青透明鱗腹膜光",           note:"体内黒", status:"todo", mappedId:null },
@@ -86,7 +86,7 @@ window.MEDAKA_MASTER = {
     { fixNo:"0145", name:"紅薊",            type:"朱赤透明鱗ブラックリムヒカリ", note:"ヒレ美", status:"done", mappedId:"m018" },
     { fixNo:"0147", name:"楊貴妃ヒレ長",    type:"朱赤ヒレ長",               note:"", status:"todo", mappedId:null },
     { fixNo:"0148", name:"ピンクメラー",    type:"ピンクメラー",             note:"", status:"todo", mappedId:null },
-    { fixNo:"0150", name:"紅白ラメ",        type:"白朱赤ラメ",               note:"", status:"todo", mappedId:null }
+    { fixNo:"0150", name:"紅白ラメ",        type:"白朱赤ラメ",               note:"図鑑記事はNo.0181", status:"done", mappedId:"m056" }
   ],
 
   /* ---------------------------------------------------------------------
