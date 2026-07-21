@@ -15,7 +15,7 @@
  *   derived  … true=体型・ヒレ違いの派生（例「朱赤ダルマ」。個別調査の価値は低い）
  *   status   … done=図鑑に収録済み / todo=未収録   mappedId … medaka-data.js の id
  *
- * 収録状況：全571件中 21件が収録済み（通称つき70件 / 派生453件）
+ * 収録状況：全571件中 111件が収録済み（通称つき70件 / 派生453件）
  * ===================================================================== */
 window.MEDAKA_MASTER = {
   source: "改良メダカWEB図鑑 ナンバー一覧（固定品種／品種／種類）",
@@ -65,8 +65,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m057"
   },
   {
     "no": "0005",
@@ -76,8 +76,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m058"
   },
   {
     "no": "0006",
@@ -87,8 +87,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m059"
   },
   {
     "no": "0007",
@@ -98,8 +98,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m060"
   },
   {
     "no": "0008",
@@ -109,8 +109,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m061"
   },
   {
     "no": "0009",
@@ -131,8 +131,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m062"
   },
   {
     "no": "0011",
@@ -142,8 +142,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m063"
   },
   {
     "no": "0011",
@@ -153,8 +153,8 @@ window.MEDAKA_MASTER = {
     "note": "ブラック（ヒレ黄）、共通補足：背地反応なし",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m064"
   },
   {
     "no": "0012",
@@ -164,8 +164,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m065"
   },
   {
     "no": "0013",
@@ -175,8 +175,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m066"
   },
   {
     "no": "0014",
@@ -186,8 +186,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m067"
   },
   {
     "no": "0014",
@@ -197,8 +197,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m068"
   },
   {
     "no": "0014",
@@ -208,8 +208,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m069"
   },
   {
     "no": "0015",
@@ -230,8 +230,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m105"
   },
   {
     "no": "0020",
@@ -285,8 +285,8 @@ window.MEDAKA_MASTER = {
     "note": "ブラック（ヒレ黄）、共通補足：背地反応なし",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m070"
   },
   {
     "no": "0026",
@@ -318,8 +318,8 @@ window.MEDAKA_MASTER = {
     "note": "青（ヒレ黄）",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m071"
   },
   {
     "no": "0029",
@@ -461,8 +461,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m072"
   },
   {
     "no": "0045",
@@ -527,8 +527,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m073"
   },
   {
     "no": "0051",
@@ -560,8 +560,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m074"
   },
   {
     "no": "0054",
@@ -582,8 +582,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m075"
   },
   {
     "no": "0057",
@@ -593,8 +593,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m075"
   },
   {
     "no": "0059",
@@ -714,8 +714,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m077"
   },
   {
     "no": "0070",
@@ -747,8 +747,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m078"
   },
   {
     "no": "0077",
@@ -758,8 +758,8 @@ window.MEDAKA_MASTER = {
     "note": "青（ヒレ黄）",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m079"
   },
   {
     "no": "0078",
@@ -857,8 +857,8 @@ window.MEDAKA_MASTER = {
     "note": "白（クリーム）",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m080"
   },
   {
     "no": "0092",
@@ -868,8 +868,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m081"
   },
   {
     "no": "0093",
@@ -879,8 +879,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m082"
   },
   {
     "no": "0094",
@@ -890,8 +890,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m083"
   },
   {
     "no": "0095",
@@ -901,8 +901,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m084"
   },
   {
     "no": "0096",
@@ -923,8 +923,8 @@ window.MEDAKA_MASTER = {
     "note": "共通補足：背地反応なし",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m085"
   },
   {
     "no": "0098",
@@ -934,8 +934,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m086"
   },
   {
     "no": "0099",
@@ -956,8 +956,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m087"
   },
   {
     "no": "0102",
@@ -967,8 +967,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m088"
   },
   {
     "no": "0103",
@@ -978,8 +978,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m089"
   },
   {
     "no": "0104",
@@ -1000,8 +1000,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m090"
   },
   {
     "no": "0106",
@@ -1022,8 +1022,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m091"
   },
   {
     "no": "0108",
@@ -1044,8 +1044,8 @@ window.MEDAKA_MASTER = {
     "note": "共通補足：背地反応なし",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m092"
   },
   {
     "no": "0110",
@@ -1055,8 +1055,8 @@ window.MEDAKA_MASTER = {
     "note": "共通補足：背地反応なし",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m093"
   },
   {
     "no": "0112",
@@ -1066,8 +1066,8 @@ window.MEDAKA_MASTER = {
     "note": "ブラック（ヒレ黄）、共通補足：背地反応なし",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m094"
   },
   {
     "no": "0113",
@@ -1099,8 +1099,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m095"
   },
   {
     "no": "0116",
@@ -1132,8 +1132,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m096"
   },
   {
     "no": "0118",
@@ -1154,8 +1154,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m097"
   },
   {
     "no": "0122",
@@ -1165,8 +1165,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m079"
   },
   {
     "no": "0123",
@@ -1176,8 +1176,8 @@ window.MEDAKA_MASTER = {
     "note": "ラメ（多色）",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m098"
   },
   {
     "no": "0124",
@@ -1187,8 +1187,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m099"
   },
   {
     "no": "0127",
@@ -1198,8 +1198,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m100"
   },
   {
     "no": "0128",
@@ -1209,8 +1209,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m101"
   },
   {
     "no": "0129",
@@ -1220,8 +1220,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m102"
   },
   {
     "no": "0130",
@@ -1231,8 +1231,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m103"
   },
   {
     "no": "0131",
@@ -1275,8 +1275,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m104"
   },
   {
     "no": "0135",
@@ -1308,8 +1308,8 @@ window.MEDAKA_MASTER = {
     "note": "共通補足：シースルー",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m105"
   },
   {
     "no": "0139",
@@ -1319,8 +1319,8 @@ window.MEDAKA_MASTER = {
     "note": "共通補足；体内黒",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m106"
   },
   {
     "no": "0140",
@@ -1341,8 +1341,8 @@ window.MEDAKA_MASTER = {
     "note": "白（クリーム）",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m107"
   },
   {
     "no": "0142",
@@ -1352,8 +1352,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m108"
   },
   {
     "no": "0144",
@@ -1396,8 +1396,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m109"
   },
   {
     "no": "0148",
@@ -1407,8 +1407,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": true,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m110"
   },
   {
     "no": "0149",
@@ -1473,8 +1473,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m057"
   },
   {
     "no": "0005",
@@ -1495,8 +1495,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m080"
   },
   {
     "no": "0007",
@@ -1528,8 +1528,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m062"
   },
   {
     "no": "0011",
@@ -1539,8 +1539,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m063"
   },
   {
     "no": "0012",
@@ -1550,8 +1550,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m065"
   },
   {
     "no": "0013",
@@ -1572,8 +1572,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m059"
   },
   {
     "no": "0015",
@@ -1583,8 +1583,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m060"
   },
   {
     "no": "0016",
@@ -1594,8 +1594,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m061"
   },
   {
     "no": "0018",
@@ -1605,8 +1605,8 @@ window.MEDAKA_MASTER = {
     "note": "共通補足：背地反応なし",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m070"
   },
   {
     "no": "0019",
@@ -1803,8 +1803,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m071"
   },
   {
     "no": "0055",
@@ -1968,8 +1968,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m066"
   },
   {
     "no": "0072",
@@ -1979,8 +1979,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m067"
   },
   {
     "no": "0076",
@@ -1990,8 +1990,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m076"
   },
   {
     "no": "0078",
@@ -2045,8 +2045,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m073"
   },
   {
     "no": "0092",
@@ -2144,8 +2144,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m081"
   },
   {
     "no": "0104",
@@ -2166,8 +2166,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m074"
   },
   {
     "no": "0108",
@@ -2177,8 +2177,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m087"
   },
   {
     "no": "0110",
@@ -2199,8 +2199,8 @@ window.MEDAKA_MASTER = {
     "note": "共通補足；体内黒",
     "named": false,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m106"
   },
   {
     "no": "0113",
@@ -2210,8 +2210,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m108"
   },
   {
     "no": "0114",
@@ -2276,8 +2276,8 @@ window.MEDAKA_MASTER = {
     "note": "ラメ（多色）",
     "named": false,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m098"
   },
   {
     "no": "0122",
@@ -2760,8 +2760,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": false,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m103"
   },
   {
     "no": "0178",
@@ -3343,8 +3343,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m095"
   },
   {
     "no": "0242",
@@ -3354,8 +3354,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m096"
   },
   {
     "no": "0244",
@@ -3442,8 +3442,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m109"
   },
   {
     "no": "0252",
@@ -3860,8 +3860,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m088"
   },
   {
     "no": "0298",
@@ -3882,8 +3882,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m104"
   },
   {
     "no": "0301",
@@ -3893,8 +3893,8 @@ window.MEDAKA_MASTER = {
     "note": "共通補足：背地反応なし",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m064"
   },
   {
     "no": "0302",
@@ -3904,8 +3904,8 @@ window.MEDAKA_MASTER = {
     "note": "共通補足：背地反応なし",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m093"
   },
   {
     "no": "0303",
@@ -3959,8 +3959,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m097"
   },
   {
     "no": "0312",
@@ -4003,8 +4003,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m089"
   },
   {
     "no": "0319",
@@ -4762,8 +4762,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m086"
   },
   {
     "no": "0404",
@@ -4795,8 +4795,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m084"
   },
   {
     "no": "0407",
@@ -5576,8 +5576,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m072"
   },
   {
     "no": "0500",
@@ -5994,8 +5994,8 @@ window.MEDAKA_MASTER = {
     "note": "",
     "named": false,
     "derived": true,
-    "status": "todo",
-    "mappedId": null
+    "status": "done",
+    "mappedId": "m082"
   },
   {
     "no": "0564",
