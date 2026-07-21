@@ -60,6 +60,34 @@ body{
 .chip.active{background:var(--accent); color:#fff; border-color:var(--accent)}
 .result-count{margin-top:12px; font-size:.85rem; color:var(--muted)}
 
+/* 絞り込み・並び替えのツールバー（フィルタは折りたたみ式） */
+.toolbar{display:flex; gap:8px; margin-top:10px; flex-wrap:wrap}
+.tool-btn{
+  border:1px solid var(--border); background:var(--panel); color:var(--text);
+  padding:8px 14px; border-radius:10px; cursor:pointer; font-size:.88rem; white-space:nowrap;
+}
+.tool-btn:hover{border-color:var(--accent)}
+.tool-btn.on{border-color:var(--accent); color:var(--accent); font-weight:700}
+.tool-btn .caret{font-size:.7rem; margin-left:5px}
+select.tool-btn{appearance:none}
+.filter-panel{
+  margin-top:10px; padding:12px; border:1px solid var(--border);
+  border-radius:12px; background:var(--panel);
+  display:flex; flex-direction:column; gap:10px;
+}
+.filter-panel.hidden{display:none}
+.active-chips{display:flex; flex-wrap:wrap; gap:6px}
+.active-chips:not(:empty){margin-top:10px}
+.active-chip{
+  background:var(--accent); color:#fff; border-radius:999px; padding:3px 8px 3px 11px;
+  font-size:.78rem; display:inline-flex; align-items:center; gap:6px;
+}
+.active-chip button{
+  background:rgba(255,255,255,.25); border:none; color:#fff; border-radius:50%;
+  width:16px; height:16px; line-height:1; cursor:pointer; font-size:.72rem; padding:0;
+}
+.active-chip button:hover{background:rgba(255,255,255,.45)}
+
 /* カード一覧 */
 .card-grid{
   display:grid; gap:16px;
@@ -81,6 +109,13 @@ body{
 .card-tags{display:flex; flex-wrap:wrap; gap:4px}
 .mini-tag{font-size:.7rem; background:var(--accent-weak); color:var(--accent);
   padding:2px 7px; border-radius:6px}
+/* 形質アイコン（ラメ・体外光・ヒレ長など） */
+.trait{display:inline-flex; align-items:center; gap:3px; font-size:.68rem;
+  padding:2px 6px; border-radius:6px; background:var(--chip); color:var(--text)}
+.trait svg{display:block; flex:none}
+/* カード下部の★難易度・作出年 */
+.card-meta{display:flex; align-items:center; gap:8px; margin-top:6px;
+  font-size:.72rem; color:var(--muted)}
 .badge-draft{font-size:.66rem; background:#f0ad4e; color:#3a2600;
   padding:1px 6px; border-radius:6px; margin-left:6px; vertical-align:middle}
 
@@ -122,6 +157,19 @@ body{
 .tag-row{display:flex; flex-wrap:wrap; gap:5px; margin-top:4px}
 .ref-note{font-size:.75rem; color:var(--muted)}
 .empty{color:var(--muted); font-style:italic}
+
+/* 系統ツリー（親→本種→子） */
+.lineage{display:flex; flex-direction:column; gap:6px}
+.lin-row{display:flex; align-items:center; gap:8px; flex-wrap:wrap}
+.lin-label{font-size:.74rem; color:var(--muted); min-width:3.2em}
+.lin-node{
+  border:1px solid var(--border); background:var(--chip); color:var(--text);
+  border-radius:8px; padding:4px 10px; cursor:pointer; font-size:.84rem;
+}
+.lin-node:hover{border-color:var(--accent); color:var(--accent)}
+.lin-node.self{background:var(--accent); color:#fff; border-color:var(--accent);
+  font-weight:700; cursor:default}
+.lin-arrow{color:var(--muted); font-size:.8rem}
 
 .site-footer{
   max-width:1080px; margin:20px auto 40px; padding:16px 20px;

@@ -13,10 +13,19 @@
   </header>
 
   <main class="container">
-    <!-- 検索・絞り込み -->
+    <!-- 検索・絞り込み・並び替え -->
     <section class="controls">
       <input type="search" id="searchBox" placeholder="品種名・よみ・別名で検索…" aria-label="検索">
-      <div id="filterArea" class="filter-area"><!-- JS が分類フィルタを生成 --></div>
+      <div class="toolbar">
+        <button type="button" class="tool-btn" id="btnFilter" aria-expanded="false">絞り込み<span class="caret">▾</span></button>
+        <select class="tool-btn" id="selSort" aria-label="並び替え">
+          <option value="name">並び替え：よみ順</option>
+          <option value="year">並び替え：作出年が新しい順</option>
+          <option value="diff">並び替え：飼育難易度が高い順</option>
+        </select>
+      </div>
+      <div id="filterPanel" class="filter-panel hidden"><!-- JS が分類フィルタを生成 --></div>
+      <div id="activeChips" class="active-chips"><!-- 適用中のフィルタ --></div>
       <div class="result-count" id="resultCount"></div>
     </section>
 

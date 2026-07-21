@@ -13,7 +13,8 @@
     return m && m.id && m.status !== "template" && m.id !== "m000";
   });
 
-  var state = { q: "", filters: {} };  // filters: {categoryKey: value}
+  // filters:{categoryKey:value} / sort:並び順 / filterOpen:絞り込みパネルの開閉
+  var state = { q: "", filters: {}, sort: "name", filterOpen: false };
 
   // ---- 体色→カードの背景色（写真が無い間のプレースホルダ）----
   var COLOR_MAP = {
@@ -37,18 +38,91 @@
     return "rgb("+r+","+g+","+b+")";
   }
   function gradOf(m){ var c = colorOf(m); return "linear-gradient(135deg,"+c+","+shade(c,0.6)+")"; }
-  // 写真が無い間のプレースホルダ：メダカのシルエット（案A）
-  function fishSVG(w){
-    w = w || 84; var h = Math.round(w*0.51);
+  /* 写真が無い間のプレースホルダ：体型・ヒレ・虹色素胞で描き分けるシルエット
+     （同じ体色の品種でも見分けられるようにするため） */
+  function fishSVG(m, w){
+    w = w || 84;
+    var h = Math.round(w*0.51);
+    var p = (m && m.phenotype) || {};
+    var bt = p.bodyType || "", fin = p.finVariation || "", ir = p.iridophore || "";
+    var body, tail, fins = "", eyeX = 25;
+
+    if (bt.indexOf("ダルマ") >= 0){            // ダルマ：丸く短い体型
+      body = '<ellipse cx="46" cy="28" rx="22" ry="17"/>';
+      tail = '<polygon points="66,28 92,16 88,28 92,40"/>';
+      eyeX = 32;
+    } else if (bt.indexOf("ヒカリ") >= 0){     // ヒカリ体型：菱形の尾・上下対称
+      body = '<ellipse cx="42" cy="28" rx="29" ry="12"/>';
+      tail = '<polygon points="70,28 100,14 94,28 100,42"/>';
+      fins = '<polygon points="40,16 54,6 58,18"/><polygon points="40,40 54,50 58,38"/>';
+    } else {                                   // 普通体型
+      body = '<ellipse cx="42" cy="28" rx="30" ry="12"/>';
+      tail = '<polygon points="70,28 100,13 95,28 100,43"/>';
+      fins = '<polygon points="40,17 52,7 56,19"/><polygon points="40,39 52,49 56,37"/>';
+    }
+    if (/ヒレ長|リアルロングフィン|スワロー/.test(fin)){   // ヒレ長：ゆったり伸びるヒレ
+      tail = '<path d="M68 28 C82 6 100 2 106 8 C100 18 96 24 94 28 C96 32 100 38 106 48 C100 54 82 50 68 28 Z"/>';
+      fins = '<path d="M40 16 C48 2 60 0 62 8 C58 14 52 18 46 20 Z"/>'+
+             '<path d="M40 40 C48 54 60 56 62 48 C58 42 52 38 46 36 Z"/>';
+    }
+    // 虹色素胞のテクスチャ（ラメ＝粒／体外光＝背の光ライン）
+    var tex = "";
+    if (ir.indexOf("ラメ") >= 0){
+      tex = '<g fill="rgba(255,255,255,.5)">'+
+        [[30,24],[38,31],[46,22],[54,30],[36,20],[50,35],[26,30],[44,33],[58,24]]
+        .map(function(c){ return '<circle cx="'+c[0]+'" cy="'+c[1]+'" r="1.5"/>'; }).join("")+'</g>';
+    } else if (ir.indexOf("体外光") >= 0){
+      tex = '<path d="M22 21 L64 19" stroke="rgba(255,255,255,.65)" stroke-width="2.5" stroke-linecap="round" fill="none"/>';
+    }
     return '<svg viewBox="0 0 110 56" width="'+w+'" height="'+h+'" aria-hidden="true">'+
-      '<g fill="rgba(255,255,255,.34)">'+
-        '<ellipse cx="42" cy="28" rx="30" ry="12"/>'+
-        '<polygon points="70,28 100,13 95,28 100,43"/>'+
-        '<polygon points="40,17 52,7 56,19"/>'+
-        '<polygon points="40,39 52,49 56,37"/>'+
-      '</g>'+
-      '<circle cx="25" cy="24" r="3.1" fill="rgba(0,0,0,.26)"/>'+
+      '<g fill="rgba(255,255,255,.34)">'+body+tail+fins+'</g>'+tex+
+      '<circle cx="'+eyeX+'" cy="24" r="3.1" fill="rgba(0,0,0,.26)"/>'+
     '</svg>';
+  }
+
+  /* ---------- 形質アイコン（カード・詳細で共用） ---------- */
+  var TRAIT_ICONS = {
+    "ラメ":'<svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 0 L6.2 3.8 L10 5 L6.2 6.2 L5 10 L3.8 6.2 L0 5 L3.8 3.8 Z" fill="#c9a227"/></svg>',
+    "体外光":'<svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 5 H9" stroke="#5b8fb0" stroke-width="2.5" stroke-linecap="round"/></svg>',
+    "ヒレ長":'<svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 7 C4 1 6 9 9 3" stroke="#7a6fb0" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>',
+    "ダルマ":'<svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="4" fill="#d1785a"/></svg>',
+    "アルビノ":'<svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.4" fill="none" stroke="#d05a7a" stroke-width="1.6"/></svg>',
+    "透明鱗":'<svg width="10" height="10" viewBox="0 0 10 10"><path d="M5 1 L9 5 L5 9 L1 5 Z" fill="none" stroke="#6aa9a0" stroke-width="1.4"/></svg>',
+    "スワロー":'<svg width="10" height="10" viewBox="0 0 10 10"><path d="M1 2 L5 6 L9 2" stroke="#7a6fb0" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>',
+    "ブラックリム":'<svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="3.4" fill="none" stroke="#4a5058" stroke-width="2"/></svg>'
+  };
+  // refTags と phenotype から代表的な形質を最大4つ拾う
+  function traitsOf(m){
+    var p = m.phenotype || {}, out = [], seen = {};
+    function add(k){ if (TRAIT_ICONS[k] && !seen[k]){ seen[k]=1; out.push(k); } }
+    (m.refTags||[]).forEach(function(t){
+      if (/ラメ/.test(t)) add("ラメ");
+      else if (/体外光/.test(t)) add("体外光");
+      else if (/リアルロングフィン|ヒレ長/.test(t)) add("ヒレ長");
+      else if (/スワロー/.test(t)) add("スワロー");
+      else if (/アルビノ/.test(t)) add("アルビノ");
+      else if (/透明鱗/.test(t)) add("透明鱗");
+      else if (/ブラックリム/.test(t)) add("ブラックリム");
+      else if (/ダルマ/.test(t)) add("ダルマ");
+    });
+    if (/ラメ/.test(p.iridophore||"")) add("ラメ");
+    if (/体外光/.test(p.iridophore||"")) add("体外光");
+    if (/ヒレ長|リアルロングフィン/.test(p.finVariation||"")) add("ヒレ長");
+    if (/スワロー/.test(p.finVariation||"")) add("スワロー");
+    if (/ダルマ/.test(p.bodyType||"")) add("ダルマ");
+    if (/アルビノ/.test(p.eyeVariation||"")) add("アルビノ");
+    return out.slice(0,4);
+  }
+  function traitChips(m){
+    return traitsOf(m).map(function(t){
+      return '<span class="trait">'+TRAIT_ICONS[t]+esc(t)+'</span>';
+    }).join("");
+  }
+  // 作出年から西暦4桁だけ取り出す（「2020年4月」「2016年以前（要確認）」等に対応）
+  function yearOf(m){
+    var y = ((m.origin||{}).year)||"";
+    var mt = y.match(/(\d{4})/);
+    return mt ? mt[1] : "";
   }
   function esc(s){
     return String(s==null?"":s).replace(/[&<>"']/g,function(c){
@@ -56,40 +130,76 @@
     });
   }
 
-  /* ---------- 分類フィルタUIの生成 ---------- */
-  function buildFilters(){
-    var area = document.getElementById("filterArea");
-    var cats = CLS.categories || [];
-    area.innerHTML = "";
-    cats.forEach(function(cat){
-      // データ中に実在する値だけをチップにする
+  /* ---------- 分類フィルタUIの生成（折りたたみ式） ----------
+     データ中に実在する値だけをチップにする。既定は閉じた状態で、
+     一覧が画面上部にすぐ現れるようにする。 */
+  function catGroups(){
+    return (CLS.categories || []).map(function(cat){
       var vals = {};
       LIST.forEach(function(m){
         var v = m.phenotype && m.phenotype[cat.key];
         if (v) vals[v] = true;
       });
-      var keys = Object.keys(vals);
-      if (!keys.length) return;
-      var group = document.createElement("div");
-      group.className = "filter-group";
-      group.innerHTML = '<span class="group-label">'+esc(cat.label)+'</span>';
-      keys.forEach(function(v){
-        var chip = document.createElement("button");
-        chip.className = "chip";
-        chip.textContent = v;
-        chip.onclick = function(){
-          if (state.filters[cat.key] === v){ delete state.filters[cat.key]; chip.classList.remove("active"); }
-          else {
-            // 同カテゴリの他チップを解除
-            Array.prototype.forEach.call(group.querySelectorAll(".chip"),function(c){c.classList.remove("active");});
-            state.filters[cat.key] = v; chip.classList.add("active");
-          }
-          render();
-        };
-        group.appendChild(chip);
-      });
-      area.appendChild(group);
+      return { cat: cat, keys: Object.keys(vals) };
+    }).filter(function(g){ return g.keys.length; });
+  }
+
+  function buildFilters(){
+    var panel = document.getElementById("filterPanel");
+    panel.innerHTML = catGroups().map(function(g){
+      return '<div class="filter-group"><span class="group-label">'+esc(g.cat.label)+'</span>'+
+        g.keys.map(function(v){
+          return '<button class="chip'+(state.filters[g.cat.key]===v?" active":"")+
+            '" data-k="'+esc(g.cat.key)+'" data-v="'+esc(v)+'">'+esc(v)+'</button>';
+        }).join("")+'</div>';
+    }).join("");
+    panel.classList.toggle("hidden", !state.filterOpen);
+
+    Array.prototype.forEach.call(panel.querySelectorAll(".chip"), function(chip){
+      chip.onclick = function(){
+        var k = chip.dataset.k, v = chip.dataset.v;
+        if (state.filters[k] === v) delete state.filters[k];
+        else state.filters[k] = v;
+        buildFilters(); renderActiveChips(); render();
+      };
     });
+    // 絞り込みボタンに件数を出す
+    var n = Object.keys(state.filters).length;
+    var btn = document.getElementById("btnFilter");
+    btn.classList.toggle("on", state.filterOpen || n > 0);
+    btn.innerHTML = '絞り込み'+(n?'（'+n+'）':'')+'<span class="caret">▾</span>';
+  }
+
+  /* 適用中のフィルタをチップ表示（×で個別解除） */
+  function renderActiveChips(){
+    var box = document.getElementById("activeChips");
+    var keys = Object.keys(state.filters);
+    if (!keys.length){ box.innerHTML = ""; return; }
+    box.innerHTML = keys.map(function(k){
+      return '<span class="active-chip">'+esc(state.filters[k])+
+             '<button data-rm="'+esc(k)+'" aria-label="解除">×</button></span>';
+    }).join("");
+    Array.prototype.forEach.call(box.querySelectorAll("[data-rm]"), function(b){
+      b.onclick = function(){
+        delete state.filters[b.dataset.rm];
+        buildFilters(); renderActiveChips(); render();
+      };
+    });
+  }
+
+  /* ---------- 並び替え ---------- */
+  function sortList(arr){
+    var a = arr.slice();
+    if (state.sort === "year"){
+      a.sort(function(x,y){ return (Number(yearOf(y))||0) - (Number(yearOf(x))||0); });
+    } else if (state.sort === "diff"){
+      a.sort(function(x,y){ return ((y.care||{}).difficulty||0) - ((x.care||{}).difficulty||0); });
+    } else {
+      a.sort(function(x,y){
+        return (x.reading||x.name).localeCompare(y.reading||y.name,"ja");
+      });
+    }
+    return a;
   }
 
   /* ---------- 絞り込み ---------- */
@@ -109,21 +219,23 @@
   /* ---------- カード一覧 ---------- */
   function render(){
     var grid = document.getElementById("cardGrid");
-    var shown = LIST.filter(match);
+    var shown = sortList(LIST.filter(match));
     grid.innerHTML = "";
     shown.forEach(function(m){
       var card = document.createElement("div");
       card.className = "card";
-      var tags = [];
-      var p = m.phenotype || {};
-      [p.bodyColor,p.iridophore,p.finVariation].forEach(function(t){ if(t && t!=="なし") tags.push(t); });
       var draft = m.status==="draft" ? '<span class="badge-draft">調査中</span>' : "";
+      // 難易度・作出年（データがあるものだけ出す）
+      var d = (m.care||{}).difficulty, y = yearOf(m), meta = [];
+      if (d) meta.push('<span class="stars">'+starMarks(d)+'</span>');
+      if (y) meta.push('<span>'+y+'年</span>');
       card.innerHTML =
-        '<div class="card-photo" style="background:'+gradOf(m)+'">'+fishSVG(84)+'</div>'+
+        '<div class="card-photo" style="background:'+gradOf(m)+'">'+fishSVG(m,84)+'</div>'+
         '<div class="card-info">'+
           '<p class="card-name">'+esc(m.name)+draft+'</p>'+
           '<p class="card-reading">'+esc(m.reading||"")+'</p>'+
-          '<div class="card-tags">'+tags.map(function(t){return '<span class="mini-tag">'+esc(t)+'</span>';}).join("")+'</div>'+
+          '<div class="card-tags">'+traitChips(m)+'</div>'+
+          (meta.length ? '<div class="card-meta">'+meta.join("")+'</div>' : "")+
         '</div>';
       card.onclick = function(){ openDetail(m); };
       grid.appendChild(card);
@@ -136,10 +248,13 @@
   function row(label,val){
     return '<tr><th>'+esc(label)+'</th><td>'+(val||'<span class="empty">調査中</span>')+'</td></tr>';
   }
+  function starMarks(n){
+    var s=""; for(var i=1;i<=5;i++) s+= i<=n?"★":"☆";
+    return s;
+  }
   function stars(n){
     if(!n) return '<span class="empty">調査中</span>';
-    var s=""; for(var i=1;i<=5;i++) s+= i<=n?"★":"☆";
-    return '<span class="stars">'+s+'</span>（'+n+'/5）';
+    return '<span class="stars">'+starMarks(n)+'</span>（'+n+'/5）';
   }
   function fixationText(arr){
     if(!arr||!arr.length) return "";
@@ -150,6 +265,34 @@
   function nameById(id){
     var f = LIST.filter(function(m){return m.id===id;})[0];
     return f ? f.name : id;
+  }
+  function byId(id){ return LIST.filter(function(m){return m.id===id;})[0]; }
+  function childrenOf(id){
+    return LIST.filter(function(m){
+      return ((m.lineage||{}).parentIds||[]).indexOf(id) >= 0;
+    });
+  }
+
+  /* ---------- 系統ツリー（親→本種→子。クリックでその品種へ移動） ----------
+     親子データが無い品種では、空欄を作らないためセクションごと出さない。 */
+  function lineageSection(m){
+    var parents  = ((m.lineage||{}).parentIds||[]).map(byId).filter(Boolean);
+    var children = childrenOf(m.id);
+    if (!parents.length && !children.length) return "";
+    function node(x){ return '<button class="lin-node" data-go="'+esc(x.id)+'">'+esc(x.name)+'</button>'; }
+    var self = '<span class="lin-node self">'+esc(m.name)+'</span>';
+    var rows = "";
+    if (parents.length){
+      rows += '<div class="lin-row"><span class="lin-label">親</span>'+
+        parents.map(node).join('<span class="lin-arrow">＋</span>')+
+        '<span class="lin-arrow">→</span>'+self+'</div>';
+    }
+    if (children.length){
+      rows += '<div class="lin-row"><span class="lin-label">子</span>'+self+
+        '<span class="lin-arrow">→</span>'+children.map(node).join(" ")+'</div>';
+    }
+    return '<div class="detail-section"><h3>系統</h3><div class="lineage">'+rows+'</div>'+
+           '<div class="ref-note">クリックでその品種へ移動できます</div></div>';
   }
 
   /* ---------- 相場（価格） ---------- */
@@ -222,11 +365,12 @@
 
     body.innerHTML =
       '<button class="detail-close" data-close="1" aria-label="閉じる">×</button>'+
-      '<div class="detail-hero" style="background:'+gradOf(m)+'">'+fishSVG(118)+'</div>'+
+      '<div class="detail-hero" style="background:'+gradOf(m)+'">'+fishSVG(m,118)+'</div>'+
       '<div class="detail-body">'+
         '<h2>'+esc(m.name)+(m.status==="draft"?' <span class="badge-draft">調査中</span>':'')+'</h2>'+
         '<p class="detail-reading">'+esc(m.reading||"")+'</p>'+
         ((m.aliases&&m.aliases.length)?'<p class="detail-aliases">別名：'+esc(m.aliases.join("、"))+'</p>':'')+
+        (traitsOf(m).length?'<div class="tag-row" style="margin-bottom:12px">'+traitChips(m)+'</div>':'')+
 
         '<div class="detail-section"><h3>基本情報</h3><table class="spec-table">'+
           row("管理ID",esc(m.id))+
@@ -237,6 +381,8 @@
           row("固定率",fixationText(m.fixation))+
           row("飼育難易度",stars(care.difficulty))+
         '</table></div>'+
+
+        lineageSection(m)+
 
         '<div class="detail-section"><h3>分類（JMA第5版）</h3><table class="spec-table">'+phenoRows+'</table>'+
           (refTags?'<div class="ref-note">参考タグ：</div><div class="tag-row">'+refTags+'</div>':'')+
@@ -262,6 +408,14 @@
         '</div>'+
       '</div>';
 
+    // 系統ツリーのノードをクリックしたら、その品種の詳細に切り替える
+    Array.prototype.forEach.call(body.querySelectorAll("[data-go]"), function(b){
+      b.onclick = function(){
+        var t = byId(b.dataset.go);
+        if (t){ openDetail(t); document.querySelector(".modal").scrollTop = 0; }
+      };
+    });
+
     document.getElementById("detailModal").classList.remove("hidden");
   }
 
@@ -276,10 +430,20 @@
       sub.textContent = "全 "+LIST.length+" 品種／分類："+(CLS.version||"JMA準拠");
     }
     buildFilters();
+    renderActiveChips();
     render();
 
     document.getElementById("searchBox").addEventListener("input",function(e){
       state.q = e.target.value; render();
+    });
+    // 絞り込みパネルの開閉
+    document.getElementById("btnFilter").addEventListener("click",function(){
+      state.filterOpen = !state.filterOpen;
+      buildFilters();
+    });
+    // 並び替え
+    document.getElementById("selSort").addEventListener("change",function(e){
+      state.sort = e.target.value; render();
     });
     document.getElementById("detailModal").addEventListener("click",function(e){
       if(e.target.getAttribute("data-close")) closeDetail();
