@@ -288,8 +288,14 @@
         '<span class="lin-arrow">→</span>'+self+'</div>';
     }
     if (children.length){
+      // 基本品種は派生が非常に多いため、並べるのは先頭だけにして残りは件数で示す
+      var LIMIT = 12;
+      var shownKids = children.slice(0, LIMIT).map(node).join(" ");
+      if (children.length > LIMIT){
+        shownKids += '<span class="lin-more">ほか'+(children.length-LIMIT)+'件</span>';
+      }
       rows += '<div class="lin-row"><span class="lin-label">子</span>'+self+
-        '<span class="lin-arrow">→</span>'+children.map(node).join(" ")+'</div>';
+        '<span class="lin-arrow">→</span>'+shownKids+'</div>';
     }
     return '<div class="detail-section"><h3>系統</h3><div class="lineage">'+rows+'</div>'+
            '<div class="ref-note">クリックでその品種へ移動できます</div></div>';
