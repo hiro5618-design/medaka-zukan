@@ -60,6 +60,52 @@ body{
 .chip.active{background:var(--accent); color:#fff; border-color:var(--accent)}
 .result-count{margin-top:12px; font-size:.85rem; color:var(--muted)}
 
+/* 交配予測パネル */
+.breed-panel{margin-bottom:14px}
+.breed-toggle{
+  width:100%; text-align:left; border:1px solid var(--border); background:var(--panel);
+  color:var(--text); padding:11px 14px; border-radius:12px; cursor:pointer; font-size:.92rem;
+}
+.breed-toggle:hover{border-color:var(--accent)}
+.breed-toggle.on{border-color:var(--accent); color:var(--accent); font-weight:700}
+.breed-icon{margin-right:7px; font-size:1.05rem}
+.breed-toggle .caret{float:right; font-size:.7rem; opacity:.7}
+.breed-body{
+  margin-top:10px; padding:14px; border:1px solid var(--border);
+  border-radius:12px; background:var(--panel);
+}
+.breed-body.hidden{display:none}
+.breed-pick{display:flex; gap:12px; align-items:flex-start; flex-wrap:wrap}
+.breed-sel{flex:1 1 220px; display:flex; flex-direction:column; gap:5px; font-size:.82rem; color:var(--muted)}
+.breed-sel select{
+  padding:8px 10px; border:1px solid var(--border); border-radius:9px;
+  background:var(--bg); color:var(--text); font-size:.9rem; width:100%;
+}
+.breed-x{align-self:center; color:var(--muted); font-size:1.1rem; padding-top:18px}
+.breed-adv{display:block; margin-top:12px; font-size:.82rem; color:var(--muted); cursor:pointer}
+.gt-box{display:flex; flex-direction:column; gap:5px; margin-top:6px;
+  padding:8px; border:1px dashed var(--border); border-radius:9px}
+.gt-row{display:flex; align-items:center; gap:6px; font-size:.76rem; color:var(--text)}
+.gt-row span{flex:0 0 6.2em; color:var(--muted)}
+.gt-row select{flex:1; padding:4px 6px; font-size:.76rem; border:1px solid var(--border);
+  border-radius:7px; background:var(--bg); color:var(--text)}
+.breed-result{margin-top:14px}
+.breed-table th,.breed-table td{font-variant-numeric:tabular-nums; text-align:left}
+.breed-table tr th:first-child{width:8em; color:var(--text); font-weight:700}
+.breed-combo{
+  margin:10px 0; padding:10px 12px; border-radius:10px;
+  background:var(--accent-weak); color:var(--text); font-size:.87rem;
+}
+.breed-combo .ref-note{display:block; margin-top:3px}
+.breed-more{margin-top:12px; font-size:.85rem}
+.breed-more summary{cursor:pointer; color:var(--accent)}
+.breed-ex{margin:.4em 0; padding-left:1.2em; font-size:.82rem}
+.breed-ex .ref-note{margin-left:4px}
+@media (max-width:520px){
+  .breed-x{display:none}
+  .breed-sel{flex:1 1 100%}
+}
+
 /* 絞り込み・並び替えのツールバー（フィルタは折りたたみ式） */
 .toolbar{display:flex; gap:8px; margin-top:10px; flex-wrap:wrap}
 .tool-btn{

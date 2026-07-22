@@ -427,6 +427,140 @@
 
   function closeDetail(){ document.getElementById("detailModal").classList.add("hidden"); }
 
+  /* =========================================================
+   * 交配予測（assets/genetics.js の計算結果を表示する）
+   * 簡易：親の品種を選ぶだけ／詳細：遺伝子型を上書きできる
+   * ======================================================= */
+  var GEN = window.MEDAKA_GENETICS;
+  var breed = { a:"", b:"", advanced:false, override:{ a:{}, b:{} } };
+
+  var STATE_LABEL = { homo:"持っている（姿に出る）", hetero:"隠し持っている", none:"持っていない" };
+
+  function varietyOptions(sel){
+    var opts = ['<option value="">品種を選ぶ…</option>'];
+    var sortedList = LIST.slice().sort(function(x,y){
+      return (x.reading||x.name).localeCompare(y.reading||y.name,"ja");
+    });
+    for (var i=0;i<sortedList.length;i++){
+      var m = sortedList[i];
+      opts.push('<option value="'+esc(m.id)+'"'+(sel===m.id?" selected":"")+'>'+esc(m.name)+'</option>');
+    }
+    return opts.join("");
+  }
+
+  // 詳細指定：予測対象の形質ごとに遺伝子型を選ばせる
+  function genotypeRows(side){
+    var id = breed[side]; if(!id) return "";
+    var m = byId(id); if(!m) return "";
+    var defs = GEN.predictableTraits(), rows = [];
+    for (var i=0;i<defs.length;i++){
+      var t = defs[i];
+      var cur = breed.override[side][t.key] || GEN.inferGenotype(m, t.key);
+      var sel = ["homo","hetero","none"].map(function(v){
+        return '<option value="'+v+'"'+(cur===v?" selected":"")+'>'+STATE_LABEL[v]+'</option>';
+      }).join("");
+      rows.push('<label class="gt-row"><span>'+esc(t.label)+'</span>'+
+        '<select data-side="'+side+'" data-trait="'+esc(t.key)+'">'+sel+'</select></label>');
+    }
+    return '<div class="gt-box">'+rows.join("")+'</div>';
+  }
+
+  // 上書き指定を反映した親オブジェクトを作る
+  function parentWithOverride(side){
+    var m = byId(breed[side]); if(!m) return null;
+    var ov = breed.override[side];
+    var copy = {}; for (var k in m) copy[k] = m[k];
+    var g = {}; for (var k2 in (m.genotype||{})) g[k2] = m.genotype[k2];
+    for (var k3 in ov) g[k3] = ov[k3];
+    copy.genotype = g;
+    return copy;
+  }
+
+  function renderBreed(){
+    var box = document.getElementById("breedBody");
+    var html =
+      '<div class="breed-pick">'+
+        '<label class="breed-sel"><span>父（オス）</span><select id="breedA">'+varietyOptions(breed.a)+'</select>'+
+          (breed.advanced?genotypeRows("a"):"")+'</label>'+
+        '<span class="breed-x" aria-hidden="true">×</span>'+
+        '<label class="breed-sel"><span>母（メス）</span><select id="breedB">'+varietyOptions(breed.b)+'</select>'+
+          (breed.advanced?genotypeRows("b"):"")+'</label>'+
+      '</div>'+
+      '<label class="breed-adv"><input type="checkbox" id="breedAdv"'+(breed.advanced?" checked":"")+'>'+
+        ' 詳細指定（親が隠し持つ形質を自分で指定する）</label>'+
+      '<div id="breedResult" class="breed-result"></div>';
+    box.innerHTML = html;
+
+    document.getElementById("breedA").onchange = function(e){ breed.a = e.target.value; breed.override.a = {}; renderBreed(); };
+    document.getElementById("breedB").onchange = function(e){ breed.b = e.target.value; breed.override.b = {}; renderBreed(); };
+    document.getElementById("breedAdv").onchange = function(e){ breed.advanced = e.target.checked; renderBreed(); };
+    var sels = box.querySelectorAll("select[data-trait]");
+    for (var i=0;i<sels.length;i++){
+      sels[i].onchange = function(e){
+        breed.override[e.target.dataset.side][e.target.dataset.trait] = e.target.value;
+        renderBreed();
+      };
+    }
+    renderBreedResult();
+  }
+
+  function renderBreedResult(){
+    var el = document.getElementById("breedResult");
+    if (!breed.a || !breed.b){
+      el.innerHTML = '<p class="empty">父と母の品種を選ぶと、子に出る形質の見込みを表示します。</p>';
+      return;
+    }
+    var A = parentWithOverride("a"), B = parentWithOverride("b");
+    var res = GEN.predict(A, B);
+
+    // 関係のある形質だけ表を作る
+    var rows = [], targets = [];
+    for (var i=0;i<res.traits.length;i++){
+      var t = res.traits[i];
+      if (!t.relevant) continue;
+      targets.push(t);
+      rows.push('<tr><th>'+esc(t.label)+'</th>'+
+        '<td>'+GEN.pct(t.appearF1)+'</td>'+
+        '<td>'+GEN.pct(t.carrierF1)+'</td>'+
+        '<td>'+GEN.pct(t.appearF2)+'</td></tr>');
+    }
+
+    var table = rows.length
+      ? '<table class="spec-table breed-table">'+
+          '<tr><th></th><th>子(F1)に出る</th><th>子が隠し持つ</th><th>孫(F2)で出る</th></tr>'+
+          rows.join("")+
+        '</table>'
+      : '<p class="empty">選んだ2品種には、予測できる形質（ヒカリ体型・ダルマ・アルビノ・透明鱗・スモールアイ）が含まれていません。</p>';
+
+    // 複数形質を同時に狙う場合
+    var combo = "";
+    if (targets.length >= 2){
+      var f1r = [], f2r = [], labels = [];
+      for (var j=0;j<targets.length;j++){
+        f1r.push(targets[j].appearF1); f2r.push(targets[j].appearF2); labels.push(targets[j].label);
+      }
+      var c1 = GEN.combined(f1r), c2 = GEN.combined(f2r);
+      combo = '<div class="breed-combo"><b>'+esc(labels.join("＋"))+'</b> をすべて備えた子が出る見込み：'+
+        '子(F1) '+GEN.pct(c1)+'／孫(F2) '+GEN.pct(c2)+
+        '<span class="ref-note">（孫の代で100匹あたり約'+GEN.per100(c2)+'匹の目安）</span></div>';
+    }
+
+    // 予測できない項目と注記（当てずっぽうを出さない姿勢を明示）
+    var exList = [];
+    for (var k=0;k<res.excluded.length;k++){
+      exList.push('<li>'+esc(res.excluded[k].label)+'<span class="ref-note">…'+esc(res.excluded[k].reason)+'</span></li>');
+    }
+    var noteList = [];
+    for (var n=0;n<res.notes.length;n++) noteList.push('<li>'+esc(res.notes[n])+'</li>');
+
+    el.innerHTML = table + combo +
+      '<details class="breed-more"><summary>予測できない項目と注意</summary>'+
+        '<p class="ref-note">次の項目は複数の遺伝子や環境で決まるため、計算せずに除外しています。</p>'+
+        '<ul class="breed-ex">'+exList.join("")+'</ul>'+
+        '<ul class="breed-ex">'+noteList.join("")+'</ul>'+
+      '</details>';
+  }
+
   /* ---------- 初期化 ---------- */
   function init(){
     var sub = document.getElementById("subtitle");
@@ -451,6 +585,17 @@
     document.getElementById("selSort").addEventListener("change",function(e){
       state.sort = e.target.value; render();
     });
+    // 交配予測パネルの開閉
+    var bb = document.getElementById("btnBreed");
+    if (bb && GEN){
+      bb.addEventListener("click", function(){
+        var body = document.getElementById("breedBody");
+        var open = body.classList.toggle("hidden") === false;
+        bb.setAttribute("aria-expanded", open ? "true" : "false");
+        bb.classList.toggle("on", open);
+        if (open && !body.innerHTML) renderBreed();
+      });
+    }
     document.getElementById("detailModal").addEventListener("click",function(e){
       if(e.target.getAttribute("data-close")) closeDetail();
     });

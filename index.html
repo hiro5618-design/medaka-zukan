@@ -13,6 +13,14 @@
   </header>
 
   <main class="container">
+    <!-- 交配予測 -->
+    <section class="breed-panel">
+      <button type="button" class="breed-toggle" id="btnBreed" aria-expanded="false">
+        <span class="breed-icon" aria-hidden="true">⚭</span>交配予測をひらく<span class="caret">▾</span>
+      </button>
+      <div id="breedBody" class="breed-body hidden"></div>
+    </section>
+
     <!-- 検索・絞り込み・並び替え -->
     <section class="controls">
       <input type="search" id="searchBox" placeholder="品種名・よみ・別名で検索…" aria-label="検索">
@@ -47,6 +55,7 @@
   <script src="data/classification.js"></script>
   <script src="data/medaka-data.js"></script>
   <script src="data/price-history.js"></script>
+  <script src="assets/genetics.js"></script>
   <script src="assets/app.js"></script>
 </body>
 </html>
