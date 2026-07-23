@@ -79,12 +79,35 @@ def main():
 
         if it.get("reading"):
             block = patch_field(block, "reading", '"%s"' % js_str(it["reading"]))
+        if it.get("name"):
+            block = patch_field(block, "name", '"%s"' % js_str(it["name"]))
+        if it.get("refTags") is not None:
+            block = re.sub(r'refTags:\s*\[[^\]]*\]', 'refTags: %s' % js_arr(it["refTags"]), block, count=1)
         # origin（作出者・作出年・経緯）
         block = re.sub(r'breeder:\s*".*?"', 'breeder:"%s"' % js_str(it.get("breeder","")), block, count=1)
         block = re.sub(r'year:\s*".*?"',   'year:"%s"'    % js_str(it.get("year","")),   block, count=1)
         block = re.sub(r'story:\s*".*?"',  'story:"%s"'   % js_str(it.get("story","")),  block, count=1, flags=re.S)
         if it.get("description"):
             block = patch_field(block, "description", '"%s"' % js_str(it["description"]))
+        # phenotype（分類）… 記事で判明したものだけ、phenotypeブロック内を差し替える
+        if it.get("phenotype"):
+            phd = it["phenotype"]
+            def patch_pheno(m):
+                inner = m.group(1)
+                for k in ("bodyColor","pattern","iridophore","bodyType","finVariation","eyeVariation"):
+                    if k in phd:
+                        inner = re.sub(r'(%s:\s*)"[^"]*"' % k,
+                                       lambda mm: mm.group(1) + '"%s"' % js_str(phd[k]),
+                                       inner, count=1)
+                return "phenotype: { " + inner.strip() + " }"
+            block = re.sub(r'phenotype:\s*\{(.*?)\}', patch_pheno, block, count=1, flags=re.S)
+        # 系統（親品種・類似）… 記事で判明したものだけ差し替える
+        if it.get("parentIds") is not None:
+            arr = "[" + ", ".join('"%s"' % js_str(x) for x in it["parentIds"]) + "]"
+            block = re.sub(r'(parentIds:\s*)\[[^\]]*\]', lambda m: m.group(1) + arr, block, count=1)
+        if it.get("similarIds") is not None:
+            arr = "[" + ", ".join('"%s"' % js_str(x) for x in it["similarIds"]) + "]"
+            block = re.sub(r'similarIds:\s*\[[^\]]*\]', 'similarIds: ' + arr, block, count=1)
         # care（難易度・ポイント）
         if it.get("difficulty") is not None:
             block = re.sub(r'difficulty:\s*(null|\d+)', 'difficulty:%d' % int(it["difficulty"]), block, count=1)
