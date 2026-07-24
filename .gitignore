@@ -6,6 +6,7 @@ tools/rakuten_access_key.txt
 tools/inbox.json
 tools/inbox.md
 tools/crawler-log.txt
+tools/price_run.log
 tools/__pycache__/
 
 # OS が作る不要ファイル
