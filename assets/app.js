@@ -38,45 +38,173 @@
     return "rgb("+r+","+g+","+b+")";
   }
   function gradOf(m){ var c = colorOf(m); return "linear-gradient(135deg,"+c+","+shade(c,0.6)+")"; }
-  /* 写真が無い間のプレースホルダ：体型・ヒレ・虹色素胞で描き分けるシルエット
-     （同じ体色の品種でも見分けられるようにするため） */
+  /* 写真が無い間のプレースホルダ：分類で描き分けるシルエット
+     ―― 同じ体色の品種でも見分けられるようにするため。
+     phenotype（体型・ヒレ・目・虹色素胞・柄）と refTags を主に使い、
+     JMA分類の語彙に無い形質（菱尾・モルフォ・メラー・鱗光・一周光）は品種名から補う。 */
+
+  // ラメの粒を置く相対位置（胴体の半径に対する比率。乱数を使わず毎回同じ絵にする）
+  var LAME_DOTS = [[-.58,-.10],[-.34,.28],[-.08,-.38],[.16,.08],[-.44,.02],
+                   [.04,.40],[.36,-.24],[.28,.30],[-.18,-.06],[.52,.04],[-.70,.22],[.12,-.14]];
+  // 尾ビレ（つけ根を原点0,28として描き、あとで胴体の後端へ移動させる）
+  var TAILS = {
+    normal : '<path d="M0 28 L30 13 L25 28 L30 43 Z"/>',
+    hikari : '<path d="M0 28 L18 14 L36 28 L18 42 Z"/>',           // 菱形
+    daruma : '<path d="M0 28 L26 16 L22 28 L26 40 Z"/>',
+    "long" : '<path d="M0 28 C13 6 30 2 36 8 C30 18 26 24 24 28 '+
+             'C26 32 30 38 36 48 C30 54 13 50 0 28 Z"/>',           // ヒレ長
+    swallow: '<path d="M0 28 L28 10 L22 22 L33 20 L24 29 L33 36 L22 34 L28 46 Z"/>',
+    morpho : '<path d="M0 28 L30 10 L27 15 L32 14 L28 20 L33 21 L29 26 L32 28 '+
+             'L29 30 L33 35 L28 36 L32 42 L27 41 L30 46 Z"/>'      // 扇状＋鋸歯
+  };
+
   function fishSVG(m, w){
     w = w || 84;
     var h = Math.round(w*0.51);
-    var p = (m && m.phenotype) || {};
-    var bt = p.bodyType || "", fin = p.finVariation || "", ir = p.iridophore || "";
-    var body, tail, fins = "", eyeX = 25;
+    var p  = (m && m.phenotype) || {};
+    var tg = ((m && m.refTags) || []).join(",");
+    var nm = (m && m.name) || "";
+    // 分類欄に入りきらない形質は、品種名と説明文からも読み取る
+    var txt = nm + "／" + ((m && m.description) || "");
+    var bt = p.bodyType||"", fin = p.finVariation||"", ir = p.iridophore||"",
+        ev = p.eyeVariation||"", pat = p.pattern||"";
 
-    if (bt.indexOf("ダルマ") >= 0){            // ダルマ：丸く短い体型
-      body = '<ellipse cx="46" cy="28" rx="22" ry="17"/>';
-      tail = '<polygon points="66,28 92,16 88,28 92,40"/>';
-      eyeX = 32;
-    } else if (bt.indexOf("ヒカリ") >= 0){     // ヒカリ体型：菱形の尾・上下対称
-      body = '<ellipse cx="42" cy="28" rx="29" ry="12"/>';
-      tail = '<polygon points="70,28 100,14 94,28 100,42"/>';
-      fins = '<polygon points="40,16 54,6 58,18"/><polygon points="40,40 54,50 58,38"/>';
-    } else {                                   // 普通体型
-      body = '<ellipse cx="42" cy="28" rx="30" ry="12"/>';
-      tail = '<polygon points="70,28 100,13 95,28 100,43"/>';
-      fins = '<polygon points="40,17 52,7 56,19"/><polygon points="40,39 52,49 56,37"/>';
+    var isDaruma = bt.indexOf("ダルマ") >= 0;
+    var isHalf   = bt.indexOf("半ダルマ") >= 0;
+    var isHikari = bt.indexOf("ヒカリ") >= 0;
+    // JMA分類の語彙に無い形質（菱尾・モルフォ・メラー・鱗光・一周光）
+    var hisio  = /菱尾/.test(txt);
+    var morpho = /モルフォ/.test(txt);
+    var mellor = /メラー/.test(txt);
+    var rinkou = /鱗光/.test(txt);
+    var isshu  = /一周光/.test(txt);
+
+    var longFin = /ヒレ長|ロングフィン/.test(fin) || /ヒレ長/.test(tg) || /ロングフィン/.test(txt);
+    var swallow = /スワロー/.test(fin) || /スワロー/.test(tg);
+    var samurai = /サムライ|セルフィン/.test(fin) || /サムライ/.test(tg);
+    var marco   = /マルコ/.test(fin) || /マルコ|背ビレがない|背ビレが無い/.test(txt);
+    var wide    = /ワイドフィン/.test(fin) || /ワイドフィン/.test(txt);
+
+    // ---- 胴体（体型で形を変える）----
+    var cy = 28, cx, rx, ry, eyeX;
+    if (isDaruma)      { cx=46; rx=22; ry=17;   eyeX=34; }   // 丸く短い
+    else if (isHalf)   { cx=44; rx=26; ry=14.5; eyeX=29; }
+    else               { cx=42; rx=30; ry=12;   eyeX=25; }
+    var body = '<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+rx+'" ry="'+ry+'"/>';
+    var tailX = cx + rx - 2;
+
+    // ---- 尾ビレ ----
+    var tailKey = "normal";
+    if (swallow)                      tailKey = "swallow";
+    else if (morpho)                  tailKey = "morpho";
+    else if (longFin)                 tailKey = "long";
+    else if (isHikari || hisio)       tailKey = "hikari";   // 菱形（菱尾は普通体型でも菱形）
+    else if (isDaruma)                tailKey = "daruma";
+    var tail = '<g transform="translate('+tailX+',0)">'+TAILS[tailKey]+'</g>';
+
+    // ---- 背ビレ（ヒレ変化で描き分け）----
+    var fx = cx - 7, topY = cy - ry + 1;
+    // ヒレの先端の高さ。ダルマ体型など胴が高い品種で枠外へはみ出さないよう上限を設ける
+    function up(d){ return Math.max(2, topY - d).toFixed(1); }
+    var dorsal;
+    if (marco){                      // マルコ：背ビレが無い
+      dorsal = "";
+    } else if (samurai){             // サムライ：背ビレが2枚に分かれる
+      dorsal = '<polygon points="'+(fx-3)+' '+topY+' '+(fx+2)+' '+up(9)+' '+(fx+4)+' '+topY+'"/>'+
+               '<polygon points="'+(fx+7)+' '+topY+' '+(fx+12)+' '+up(8)+' '+(fx+14)+' '+topY+'"/>';
+    } else if (mellor){              // メラー：ヒレが複数枚に分かれる
+      dorsal = '<polygon points="'+fx+' '+topY+' '+(fx+3)+' '+up(10)+' '+(fx+5)+' '+topY+'"/>'+
+               '<polygon points="'+(fx+7)+' '+topY+' '+(fx+10)+' '+up(11)+' '+(fx+12)+' '+topY+'"/>'+
+               '<polygon points="'+(fx+14)+' '+topY+' '+(fx+17)+' '+up(9)+' '+(fx+19)+' '+topY+'"/>';
+    } else if (swallow){             // スワロー：一部だけ不規則に長く伸びる
+      dorsal = '<polygon points="'+fx+' '+topY+' '+(fx+5)+' '+up(17)+' '+(fx+8)+' '+up(5)+' '+(fx+13)+' '+topY+'"/>';
+    } else if (longFin){             // ヒレ長：ゆったり大きく伸びる
+      dorsal = '<path d="M'+fx+' '+topY+' C'+(fx+8)+' '+up(16)+' '+(fx+20)+' '+up(18)+' '+
+               (fx+22)+' '+up(9)+' C'+(fx+17)+' '+up(4)+' '+(fx+10)+' '+up(1)+' '+(fx+6)+' '+topY+' Z"/>';
+    } else if (wide){                // ワイドフィン：幅が広い
+      dorsal = '<polygon points="'+(fx-3)+' '+topY+' '+(fx+2)+' '+up(11)+' '+(fx+14)+' '+up(11)+' '+(fx+18)+' '+topY+'"/>';
+    } else {
+      dorsal = '<polygon points="'+fx+' '+topY+' '+(fx+9)+' '+up(10)+' '+(fx+13)+' '+topY+'"/>';
     }
-    if (/ヒレ長|リアルロングフィン|スワロー/.test(fin)){   // ヒレ長：ゆったり伸びるヒレ
-      tail = '<path d="M68 28 C82 6 100 2 106 8 C100 18 96 24 94 28 C96 32 100 38 106 48 C100 54 82 50 68 28 Z"/>';
-      fins = '<path d="M40 16 C48 2 60 0 62 8 C58 14 52 18 46 20 Z"/>'+
-             '<path d="M40 40 C48 54 60 56 62 48 C58 42 52 38 46 36 Z"/>';
+    // 尻ビレは背ビレを上下反転して描く（ヒカリ体型は上下対称になる）
+    var analBase = marco
+      ? '<polygon points="'+fx+' '+topY+' '+(fx+9)+' '+up(9)+' '+(fx+13)+' '+topY+'"/>'
+      : dorsal;
+    var anal = '<g transform="translate(0,'+(2*cy)+') scale(1,-1)">'+analBase+'</g>';
+
+    // ---- 柄（斑・三色・二色）----
+    var patt = "";
+    if (/斑|錦/.test(pat) || nm.indexOf("錦") >= 0){
+      patt = '<g fill="rgba(0,0,0,.22)">'+
+        '<ellipse cx="'+(cx-rx*.32).toFixed(1)+'" cy="'+(cy-ry*.32).toFixed(1)+'" rx="'+(rx*.20).toFixed(1)+'" ry="'+(ry*.34).toFixed(1)+'"/>'+
+        '<ellipse cx="'+(cx+rx*.26).toFixed(1)+'" cy="'+(cy+ry*.24).toFixed(1)+'" rx="'+(rx*.15).toFixed(1)+'" ry="'+(ry*.30).toFixed(1)+'"/>'+
+      '</g>';
+    } else if (/三色|更紗/.test(pat)){
+      patt = '<ellipse cx="'+(cx-rx*.34).toFixed(1)+'" cy="'+cy+'" rx="'+(rx*.26).toFixed(1)+'" ry="'+(ry*.72).toFixed(1)+'" fill="rgba(255,255,255,.42)"/>'+
+             '<ellipse cx="'+(cx+rx*.30).toFixed(1)+'" cy="'+(cy-ry*.22).toFixed(1)+'" rx="'+(rx*.17).toFixed(1)+'" ry="'+(ry*.34).toFixed(1)+'" fill="rgba(0,0,0,.22)"/>';
+    } else if (/二色/.test(pat)){
+      patt = '<ellipse cx="'+(cx-rx*.36).toFixed(1)+'" cy="'+cy+'" rx="'+(rx*.34).toFixed(1)+'" ry="'+(ry*.80).toFixed(1)+'" fill="rgba(255,255,255,.34)"/>';
     }
-    // 虹色素胞のテクスチャ（ラメ＝粒／体外光＝背の光ライン）
+
+    // ---- 虹色素胞・うろこの質感 ----
     var tex = "";
-    if (ir.indexOf("ラメ") >= 0){
-      tex = '<g fill="rgba(255,255,255,.5)">'+
-        [[30,24],[38,31],[46,22],[54,30],[36,20],[50,35],[26,30],[44,33],[58,24]]
-        .map(function(c){ return '<circle cx="'+c[0]+'" cy="'+c[1]+'" r="1.5"/>'; }).join("")+'</g>';
-    } else if (ir.indexOf("体外光") >= 0){
-      tex = '<path d="M22 21 L64 19" stroke="rgba(255,255,255,.65)" stroke-width="2.5" stroke-linecap="round" fill="none"/>';
+    if (/ラメ/.test(ir) || /ラメ/.test(tg)){          // ラメ：うろこ一枚ずつの粒
+      var dots = "";
+      for (var i=0; i<LAME_DOTS.length; i++){
+        dots += '<circle cx="'+(cx+LAME_DOTS[i][0]*rx).toFixed(1)+'" cy="'+(cy+LAME_DOTS[i][1]*ry).toFixed(1)+'" r="1.5"/>';
+      }
+      tex += '<g fill="rgba(255,255,255,.58)">'+dots+'</g>';
     }
+    if (/体外光/.test(ir) || /体外光/.test(tg)){      // 体外光：背に走る光の筋
+      tex += '<path d="M'+(cx-rx+7)+' '+(cy-ry+2.5).toFixed(1)+' L'+(cx+rx-7)+' '+(cy-ry+1.5).toFixed(1)+
+             '" stroke="rgba(255,255,255,.72)" stroke-width="2.6" stroke-linecap="round" fill="none"/>';
+    }
+    if (/体内光/.test(ir)){                            // 体内光：体の内側がぼんやり光る
+      tex += '<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+(rx*.52).toFixed(1)+'" ry="'+(ry*.40).toFixed(1)+'" fill="rgba(255,255,255,.30)"/>';
+    }
+    if (rinkou){                                       // 鱗光：網目状の光
+      tex += '<g stroke="rgba(255,255,255,.40)" stroke-width="1" fill="none">'+
+        '<path d="M'+(cx-rx*.6).toFixed(1)+' '+(cy-ry*.5).toFixed(1)+' L'+(cx+rx*.1).toFixed(1)+' '+(cy+ry*.5).toFixed(1)+'"/>'+
+        '<path d="M'+(cx-rx*.2).toFixed(1)+' '+(cy-ry*.6).toFixed(1)+' L'+(cx+rx*.5).toFixed(1)+' '+(cy+ry*.4).toFixed(1)+'"/>'+
+        '<path d="M'+(cx-rx*.6).toFixed(1)+' '+(cy+ry*.4).toFixed(1)+' L'+(cx+rx*.1).toFixed(1)+' '+(cy-ry*.6).toFixed(1)+'"/>'+
+        '<path d="M'+(cx-rx*.1).toFixed(1)+' '+(cy+ry*.55).toFixed(1)+' L'+(cx+rx*.55).toFixed(1)+' '+(cy-ry*.45).toFixed(1)+'"/>'+
+      '</g>';
+    }
+    if (isshu){                                        // 一周光：体の輪郭が光る
+      tex += '<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+(rx-1.5)+'" ry="'+(ry-1.5)+
+             '" fill="none" stroke="rgba(255,255,255,.50)" stroke-width="1.4"/>';
+    }
+    if (/ブラックリム/.test(tg)){                      // ブラックリム：うろこの黒い縁取り
+      tex += '<g fill="none" stroke="rgba(0,0,0,.34)" stroke-width="1">'+
+        '<circle cx="'+(cx-rx*.20).toFixed(1)+'" cy="'+(cy-ry*.20).toFixed(1)+'" r="2.6"/>'+
+        '<circle cx="'+(cx+rx*.16).toFixed(1)+'" cy="'+(cy+ry*.18).toFixed(1)+'" r="2.6"/>'+
+        '<circle cx="'+(cx+rx*.42).toFixed(1)+'" cy="'+(cy-ry*.26).toFixed(1)+'" r="2.4"/>'+
+      '</g>';
+    }
+    if (/透明鱗/.test(tg)){                            // 透明鱗：エラ蓋が赤く見える
+      tex += '<path d="M'+(eyeX+7)+' '+(cy-4)+' Q'+(eyeX+10)+' '+cy+' '+(eyeX+7)+' '+(cy+4)+
+             '" stroke="rgba(214,86,86,.62)" stroke-width="2" fill="none" stroke-linecap="round"/>';
+    }
+
+    // ---- 目（目の変化で描き分け）----
+    var eyeR = 3.1, eyeFill = "rgba(0,0,0,.30)", eyeCx = eyeX, eyeCy = cy - ry*0.30, ring = "";
+    if (/スモールアイ/.test(ev))      { eyeR = 1.5; }
+    else if (/ビッグアイ/.test(ev))   { eyeR = 4.6; }
+    else if (/出目/.test(ev))         { eyeR = 4.0; eyeCy = cy - ry*0.44;
+                                        ring = '<circle cx="'+eyeCx+'" cy="'+eyeCy.toFixed(1)+'" r="'+(eyeR+1.3)+
+                                               '" fill="none" stroke="rgba(0,0,0,.26)" stroke-width="1"/>'; }
+    else if (/パンダ/.test(ev))       { eyeR = 3.8; eyeFill = "rgba(0,0,0,.62)"; }
+    if (/アルビノ|ルビーアイ/.test(ev) || /アルビノ/.test(tg)) eyeFill = "rgba(214,78,110,.85)";
+    if (/ブルーアイ/.test(ev))        eyeFill = "rgba(70,140,210,.85)";
+    if (/目前/.test(ev))              eyeCx = eyeX - 4;   // 目が斜め前を向く
+    var eye = ring + '<circle cx="'+eyeCx+'" cy="'+eyeCy.toFixed(1)+'" r="'+eyeR+'" fill="'+eyeFill+'"/>';
+
+    // 半透明鱗・透明鱗は胴体を薄くして透け感を出す
+    var bodyAlpha = (/半透明鱗|オーロラ/.test(tg)) ? ".24" : (/透明鱗/.test(tg) ? ".27" : ".34");
+
     return '<svg viewBox="0 0 110 56" width="'+w+'" height="'+h+'" aria-hidden="true">'+
-      '<g fill="rgba(255,255,255,.34)">'+body+tail+fins+'</g>'+tex+
-      '<circle cx="'+eyeX+'" cy="24" r="3.1" fill="rgba(0,0,0,.26)"/>'+
+      '<g fill="rgba(255,255,255,'+bodyAlpha+')">'+dorsal+anal+tail+body+'</g>'+
+      patt+tex+eye+
     '</svg>';
   }
 
