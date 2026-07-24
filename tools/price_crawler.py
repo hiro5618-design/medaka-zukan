@@ -15,9 +15,19 @@ price_crawler.py  ―― 相場（価格）収集スクリプト
   ※ 旧API（app.rakuten.co.jp）は2026-05-14に停止済み。本スクリプトは新API対応版。
 
 【使い方】
-  python price_crawler.py                # 全品種
-  python price_crawler.py m004 m003      # 品種IDを指定
-※ 楽天APIのマナーに従い、1秒に1リクエスト程度に抑えています。
+  python price_crawler.py --status done --limit 100   # まずは充実登録の品種を100件（約2分）
+  python price_crawler.py --resume                    # 続きから（本日取得済みは自動でスキップ）
+  python price_crawler.py m004 m003                   # 品種IDを指定（テスト用）
+  python price_crawler.py                             # 全1241品種（約26分）
+
+  オプション
+    --status done|draft  … 充実登録済み／調査中だけに絞る
+    --limit N            … 先頭N件だけ実行する（分割実行用）
+    --resume             … 本日すでに取得した品種を飛ばす（中断からの再開）
+
+※ 楽天APIのマナーに従い、1.2秒に1リクエストに抑えています。
+※ 充実登録（done）の品種から先に回すので、途中で止めても価値の高い品種から埋まります。
+※ Ctrl+C で中断してもその時点までの結果は保存されます。
 """
 import os, re, sys, json, time, urllib.parse, urllib.request
 from datetime import datetime, timezone, timedelta
@@ -46,19 +56,21 @@ def load_app_id():
 def load_access_key():
     return _load_secret("RAKUTEN_ACCESS_KEY", "rakuten_access_key.txt")
 
-# ---- 品種一覧（id, name, aliases）を medaka-data.js から取得 ----
+# ---- 品種一覧（id, name, aliases, status）を medaka-data.js から取得 ----
+#     ※IDは m001〜m1241。3桁固定で書くと m1000番台を取りこぼすので m\d{3,4} にすること
 def load_varieties():
     txt = open(os.path.join(DATA, "medaka-data.js"), encoding="utf-8").read()
     out = []
     pat = re.compile(
-        r'id:\s*"(m\d{3})",\s*name:\s*"([^"]+)",\s*reading:\s*"[^"]*",\s*aliases:\s*\[([^\]]*)\]',
+        r'id:\s*"(m\d{3,4})",\s*name:\s*"([^"]+)",\s*reading:\s*"[^"]*",\s*'
+        r'aliases:\s*\[([^\]]*)\],\s*status:\s*"([^"]*)"',
         re.S)
     for m in pat.finditer(txt):
-        vid, name, al = m.group(1), m.group(2), m.group(3)
-        if vid == "m000":
+        vid, name, al, status = m.group(1), m.group(2), m.group(3), m.group(4)
+        if vid == "m000" or status == "template":
             continue
         aliases = re.findall(r'"([^"]+)"', al)
-        out.append((vid, name, aliases))
+        out.append((vid, name, aliases, status))
     return out
 
 # ---- ステージ判定 ----
@@ -151,6 +163,14 @@ def save_records(records):
     body = json.dumps(records, ensure_ascii=False, indent=2)
     open(os.path.join(DATA, "price-history.js"), "w", encoding="utf-8").write(HEADER + body + "\n};\n")
 
+def opt(name, default=None):
+    """--name 値 の形のオプションを取り出す"""
+    if name in sys.argv:
+        i = sys.argv.index(name)
+        if i + 1 < len(sys.argv):
+            return sys.argv[i + 1]
+    return default
+
 def main():
     app_id = load_app_id()
     access_key = load_access_key()
@@ -163,20 +183,46 @@ def main():
         print("  -> set env RAKUTEN_ACCESS_KEY, or create tools/rakuten_access_key.txt")
         sys.exit(1)
 
-    targets = load_varieties()
-    if len(sys.argv) > 1:
-        want = set(sys.argv[1:])
-        targets = [t for t in targets if t[0] in want]
-    if not targets:
-        print("no target varieties"); sys.exit(1)
+    all_targets = load_varieties()
+    ids = [a for a in sys.argv[1:] if re.match(r"^m\d{3,4}$", a)]
+    if ids:
+        targets = [t for t in all_targets if t[0] in set(ids)]
+    else:
+        targets = all_targets
+        # --status done / draft で絞り込み
+        st = opt("--status")
+        if st:
+            targets = [t for t in targets if t[3] == st]
+        # 充実登録（done）を先に回す。途中で止めても価値の高い品種から埋まる
+        targets.sort(key=lambda t: (0 if t[3] == "done" else 1, t[0]))
 
     records = load_records()
     # 同日・同品種・同ソースの重複は上書き
     key = lambda r: (r["id"], r["checkedOn"], r["source"])
     existing = {key(r): i for i, r in enumerate(records)}
 
-    added, errors, d = 0, [], today()
-    for vid, name, aliases in targets:
+    d = today()
+    # 再開用：今日すでに取得済みの品種は飛ばす（中断しても続きから回せる）
+    if "--resume" in sys.argv:
+        before = len(targets)
+        targets = [t for t in targets if (t[0], d, "楽天市場") not in existing]
+        print(f"再開モード：本日取得済み {before - len(targets)}件をスキップ")
+
+    lim = opt("--limit")
+    if lim:
+        targets = targets[:int(lim)]
+
+    if not targets:
+        print("対象の品種がありません（すべて取得済みか、条件に一致しません）"); sys.exit(0)
+
+    est = round(len(targets) * 1.25 / 60)
+    print(f"対象 {len(targets)}品種 / 全 {len(all_targets)}品種 中　所要時間の目安：約{est}分")
+    print("（Ctrl+C で中断できます。--resume を付けて再実行すると続きから再開します）\n")
+
+    added, errors = 0, []
+    done_n = 0
+    for vid, name, aliases, status in targets:
+        done_n += 1
         kw = "メダカ " + name
         try:
             res = search(app_id, access_key, kw)
@@ -206,16 +252,27 @@ def main():
             else:
                 records.append(rec); existing[k] = len(records) - 1
             added += 1
-            print(f"{vid} {name}: egg={stages['egg']['count']} fry={stages['fry']['count']} adult={stages['adult']['count']} (total {total})")
+            print(f"[{done_n}/{len(targets)}] {vid} {name}: egg={stages['egg']['count']} "
+                  f"fry={stages['fry']['count']} adult={stages['adult']['count']} (total {total})")
+        except KeyboardInterrupt:
+            print("\n中断しました。ここまでの結果を保存します。")
+            save_records(records)
+            print(f"保存済み {added}件 / --resume を付けて再実行すると続きから再開します")
+            sys.exit(0)
         except Exception as e:
             errors.append(f"{vid} {name}: {type(e).__name__}: {e}")
-            print(f"{vid} {name}: ERROR {type(e).__name__}")
+            print(f"[{done_n}/{len(targets)}] {vid} {name}: ERROR {type(e).__name__}")
+        # 50件ごとに保存（長時間の実行で成果を失わないため）
+        if added and added % 50 == 0:
+            save_records(records)
         time.sleep(1.2)   # 楽天APIのマナー（1req/秒程度）
 
     save_records(records)
-    print(f"\nsaved: {added} records / errors {len(errors)} / total {len(records)}")
-    for e in errors:
+    print(f"\n保存しました：今回 {added}件 / エラー {len(errors)}件 / 累計 {len(records)}レコード")
+    for e in errors[:20]:
         print("  ", e.encode("ascii", "backslashreplace").decode())
+    if len(errors) > 20:
+        print(f"   … ほか{len(errors)-20}件")
 
 if __name__ == "__main__":
     main()
