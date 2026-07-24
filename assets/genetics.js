@@ -179,6 +179,7 @@
     predictableTraits: predictableTraits,
     inferGenotype: inferGenotype,
     crossTrait: crossTrait,
+    f2Rate: f2Rate,
     predict: predict,
     suggest: suggest,
     combined: combined,

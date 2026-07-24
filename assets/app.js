@@ -560,7 +560,7 @@
    * 簡易：親の品種を選ぶだけ／詳細：遺伝子型を上書きできる
    * ======================================================= */
   var GEN = window.MEDAKA_GENETICS;
-  var breed = { a:"", b:"", advanced:false, override:{ a:{}, b:{} } };
+  var breed = { mode:"forward", a:"", b:"", advanced:false, override:{ a:{}, b:{} }, targets:{} };
 
   var STATE_LABEL = { homo:"持っている（姿に出る）", hetero:"隠し持っている", none:"持っていない" };
 
@@ -606,7 +606,25 @@
 
   function renderBreed(){
     var box = document.getElementById("breedBody");
-    var html =
+    var tabs =
+      '<div class="breed-mode" role="tablist">'+
+        '<button type="button" id="modeFwd" class="'+(breed.mode==="forward"?"on":"")+'">親を選ぶ → 子を予測</button>'+
+        '<button type="button" id="modeRev" class="'+(breed.mode==="reverse"?"on":"")+'">出したい形質 → 親を探す</button>'+
+      '</div>';
+    if (breed.mode === "reverse"){
+      box.innerHTML = tabs + renderReversePicker();
+      document.getElementById("modeFwd").onclick = function(){ breed.mode="forward"; renderBreed(); };
+      var boxes = box.querySelectorAll("input[data-target]");
+      for (var i=0;i<boxes.length;i++){
+        boxes[i].onchange = function(e){
+          breed.targets[e.target.dataset.target] = e.target.checked;
+          renderReverseResult();
+        };
+      }
+      renderReverseResult();
+      return;
+    }
+    var html = tabs +
       '<div class="breed-pick">'+
         '<label class="breed-sel"><span>父（オス）</span><select id="breedA">'+varietyOptions(breed.a)+'</select>'+
           (breed.advanced?genotypeRows("a"):"")+'</label>'+
@@ -619,6 +637,7 @@
       '<div id="breedResult" class="breed-result"></div>';
     box.innerHTML = html;
 
+    document.getElementById("modeRev").onclick = function(){ breed.mode="reverse"; renderBreed(); };
     document.getElementById("breedA").onchange = function(e){ breed.a = e.target.value; breed.override.a = {}; renderBreed(); };
     document.getElementById("breedB").onchange = function(e){ breed.b = e.target.value; breed.override.b = {}; renderBreed(); };
     document.getElementById("breedAdv").onchange = function(e){ breed.advanced = e.target.checked; renderBreed(); };
@@ -686,6 +705,143 @@
         '<p class="ref-note">次の項目は複数の遺伝子や環境で決まるため、計算せずに除外しています。</p>'+
         '<ul class="breed-ex">'+exList.join("")+'</ul>'+
         '<ul class="breed-ex">'+noteList.join("")+'</ul>'+
+      '</details>';
+  }
+
+  /* =========================================================
+   * 逆引き：出したい形質から、親に使う品種の組み合わせを探す
+   * ------------------------------------------------------- */
+  function selectedTargets(){
+    var defs = GEN.predictableTraits(), out = [];
+    for (var i=0;i<defs.length;i++) if (breed.targets[defs[i].key]) out.push(defs[i]);
+    return out;
+  }
+
+  function renderReversePicker(){
+    var defs = GEN.predictableTraits(), chips = [];
+    for (var i=0;i<defs.length;i++){
+      var t = defs[i], on = !!breed.targets[t.key];
+      chips.push('<label class="rev-chip'+(on?" on":"")+'">'+
+        '<input type="checkbox" data-target="'+esc(t.key)+'"'+(on?" checked":"")+'>'+
+        esc(t.label)+'<span class="ref-note">'+esc(t.inheritance)+'</span></label>');
+    }
+    return '<div class="rev-pick"><p class="rev-lead">出したい形質を選んでください（複数可）</p>'+
+      '<div class="rev-targets">'+chips.join("")+'</div></div>'+
+      '<div id="revResult" class="breed-result"></div>';
+  }
+
+  /* 品種を「選んだ形質の状態の組み合わせ」でグループ化してから、
+     グループ同士を突き合わせる（1241×1241の総当たりを避けるため） */
+  function reverseSearch(keys){
+    var groups = {}, order = [], i, j, k;
+    for (i=0;i<LIST.length;i++){
+      var m = LIST[i], sig = [];
+      for (k=0;k<keys.length;k++) sig.push(GEN.inferGenotype(m, keys[k]));
+      var sk = sig.join("|");
+      if (!groups[sk]){ groups[sk] = { states:sig, members:[] }; order.push(sk); }
+      groups[sk].members.push(m);
+    }
+    var goal = [];
+    for (k=0;k<keys.length;k++) goal.push("homo");
+    var solo = groups[goal.join("|")] ? groups[goal.join("|")].members : [];
+
+    var combos = [];
+    for (i=0;i<order.length;i++){
+      for (j=i;j<order.length;j++){
+        var ga = groups[order[i]], gb = groups[order[j]];
+        var f1 = 1, f2 = 1;
+        for (k=0;k<keys.length;k++){
+          var c = GEN.crossTrait(ga.states[k], gb.states[k]);
+          f1 *= c.homo;
+          f2 *= GEN.f2Rate(c);
+        }
+        if (f1 <= 0 && f2 <= 0) continue;     // どう掛けても出ない組み合わせは除く
+        combos.push({ a:ga, b:gb, f1:f1, f2:f2, same:(i===j) });
+      }
+    }
+    combos.sort(function(x,y){ return (y.f1 - x.f1) || (y.f2 - x.f2); });
+    return { solo:solo, combos:combos, groups:order.length };
+  }
+
+  // グループの状態を日本語にする（例：「アルビノあり・ダルマなし」）
+  function statesLabel(defs, states){
+    var out = [];
+    for (var i=0;i<defs.length;i++){
+      var s = states[i];
+      out.push(defs[i].label + (s==="homo" ? "あり" : s==="hetero" ? "（隠し持つ）" : "なし"));
+    }
+    return out.join("・");
+  }
+  // グループの代表品種を数件だけ挙げる
+  function examples(g, n){
+    var names = [];
+    for (var i=0;i<g.members.length && i<n;i++) names.push(esc(g.members[i].name));
+    var rest = g.members.length - names.length;
+    return names.join("、") + (rest>0 ? '<span class="ref-note">　ほか'+rest+'品種</span>' : "");
+  }
+
+  function renderReverseResult(){
+    var el = document.getElementById("revResult");
+    var defs = selectedTargets();
+    if (!defs.length){
+      el.innerHTML = '<p class="empty">形質を1つ以上選ぶと、その形質を出せる親の組み合わせを図鑑の中から探します。</p>';
+      return;
+    }
+    var keys = defs.map(function(t){ return t.key; });
+    var res = reverseSearch(keys);
+    var goalName = defs.map(function(t){ return t.label; }).join("＋");
+
+    // ① すでに目標を満たしている品種
+    var soloHtml = "";
+    if (res.solo.length){
+      var list = [];
+      for (var i=0;i<res.solo.length && i<12;i++) list.push(esc(res.solo[i].name));
+      soloHtml = '<div class="rev-solo"><b>'+esc(goalName)+'</b> をすでに備えた品種が図鑑に '+
+        res.solo.length+'品種あります。'+
+        '<div class="rev-names">'+list.join("、")+
+        (res.solo.length>12 ? '<span class="ref-note">　ほか'+(res.solo.length-12)+'品種</span>' : "")+'</div>'+
+        '<p class="ref-note">同じ形質どうしを掛け合わせれば、子にもそのまま受け継がれます。</p></div>';
+    }
+
+    // ② 掛け合わせ候補（上位のみ）
+    var rows = [];
+    for (var j=0;j<res.combos.length && j<6;j++){
+      var c = res.combos[j];
+      rows.push('<tr>'+
+        '<td><div class="rev-side"><b>'+esc(statesLabel(defs, c.a.states))+'</b>'+
+          '<div class="rev-names">'+examples(c.a,3)+'</div></div>'+
+          (c.same ? '<div class="ref-note">※同じグループどうしの掛け合わせ</div>' : '')+
+        '</td>'+
+        '<td><div class="rev-side"><b>'+esc(statesLabel(defs, c.b.states))+'</b>'+
+          '<div class="rev-names">'+examples(c.b,3)+'</div></div></td>'+
+        '<td class="rev-rate">'+GEN.pct(c.f1)+'</td>'+
+        '<td class="rev-rate">'+GEN.pct(c.f2)+'</td></tr>');
+    }
+    var table = rows.length
+      ? '<table class="spec-table breed-table rev-table">'+
+          '<tr><th>親A</th><th>親B</th><th>子(F1)に出る</th><th>孫(F2)で出る</th></tr>'+
+          rows.join("")+'</table>'
+      : '<p class="empty">この組み合わせを出せる親が図鑑の中に見つかりませんでした。</p>';
+
+    // ③ 手順の説明（genetics.js の suggest を利用）
+    var steps = GEN.suggest(keys, null, null), stepHtml = [];
+    for (var s=0;s<steps.length;s++){
+      var li = [];
+      for (var t2=0;t2<steps[s].steps.length;t2++) li.push('<li>'+esc(steps[s].steps[t2])+'</li>');
+      stepHtml.push('<div class="rev-step"><b>'+esc(steps[s].label)+'</b><ol>'+li.join("")+'</ol></div>');
+    }
+
+    el.innerHTML =
+      '<p class="rev-goal">目標：<b>'+esc(goalName)+'</b></p>'+
+      soloHtml + table +
+      '<details class="breed-more"><summary>掛け方の手順と注意</summary>'+
+        stepHtml.join("")+
+        '<ul class="breed-ex">'+
+          '<li>いずれもメンデルの法則にもとづく参考値です。実際は系統や個体差で変わります。</li>'+
+          '<li>図鑑のデータでは「姿に出ていれば持っている」「出ていなければ持っていない」と判定しています。'+
+            '親が隠し持っている場合は結果が変わります。</li>'+
+          '<li>体色・ラメの量・体外光の伸び・柄は、複数の遺伝子や環境で決まるため予測対象外です。</li>'+
+        '</ul>'+
       '</details>';
   }
 

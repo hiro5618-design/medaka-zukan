@@ -101,9 +101,44 @@ body{
 .breed-more summary{cursor:pointer; color:var(--accent)}
 .breed-ex{margin:.4em 0; padding-left:1.2em; font-size:.82rem}
 .breed-ex .ref-note{margin-left:4px}
+
+/* 順引き／逆引きの切り替え */
+.breed-mode{display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap}
+.breed-mode button{
+  flex:1 1 200px; padding:8px 10px; font-size:.83rem; cursor:pointer;
+  border:1px solid var(--border); border-radius:9px;
+  background:var(--bg); color:var(--muted);
+}
+.breed-mode button.on{border-color:var(--accent); color:var(--accent); font-weight:700; background:var(--accent-weak)}
+
+/* 逆引き：目標の形質を選ぶ */
+.rev-lead{margin:0 0 8px; font-size:.85rem; color:var(--muted)}
+.rev-targets{display:flex; gap:8px; flex-wrap:wrap}
+.rev-chip{
+  display:inline-flex; align-items:center; gap:6px; cursor:pointer;
+  padding:7px 11px; border:1px solid var(--border); border-radius:999px;
+  background:var(--bg); font-size:.84rem; color:var(--text);
+}
+.rev-chip.on{border-color:var(--accent); background:var(--accent-weak); font-weight:700}
+.rev-chip .ref-note{font-size:.7rem}
+.rev-goal{margin:0 0 10px; font-size:.9rem}
+.rev-solo{
+  margin:10px 0; padding:10px 12px; border-radius:10px;
+  background:var(--accent-weak); font-size:.86rem;
+}
+.rev-names{margin-top:4px; font-size:.82rem; color:var(--text); line-height:1.6}
+.rev-solo p{margin:6px 0 0}
+.rev-table td{vertical-align:top}
+.rev-table .rev-rate{white-space:nowrap; font-weight:700}
+.rev-side b{display:block; font-size:.84rem}
+.rev-step{margin:.6em 0}
+.rev-step ol{margin:.3em 0 0; padding-left:1.3em; font-size:.82rem; line-height:1.7}
+
 @media (max-width:520px){
   .breed-x{display:none}
   .breed-sel{flex:1 1 100%}
+  .rev-table th:nth-child(3),.rev-table td:nth-child(3),
+  .rev-table th:nth-child(4),.rev-table td:nth-child(4){font-size:.8rem}
 }
 
 /* 絞り込み・並び替えのツールバー（フィルタは折りたたみ式） */
