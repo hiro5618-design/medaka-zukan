@@ -6321,6 +6321,216 @@ window.MEDAKA_MASTER = {
       },
       status: "done", mappedId: "m021",
       note: "図鑑・JMA未収録のハウスネーム。作出者・作出年・分類は要確認"
+    },
+    {
+      name: "ミッドナイトフリル体外光", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "体外光",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E3%83%9F%E3%83%83%E3%83%89%E3%83%8A%E3%82%A4%E3%83%88%E3%83%95%E3%83%AA%E3%83%AB%E4%BD%93%E5%A4%96%E5%85%89/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "白ブチラメ体外光", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "体外光ラメ白",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E7%99%BD%E3%83%96%E3%83%81%E3%83%A9%E3%83%A1%E4%BD%93%E5%A4%96%E5%85%89/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "上州", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "体外光ラメ白",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E4%B8%8A%E5%B7%9E/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "ユリシスパラディーゾ", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "ヒレ長",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E3%83%A6%E3%83%AA%E3%82%B7%E3%82%B9%E3%83%91%E3%83%A9%E3%83%87%E3%82%A3%E3%83%BC%E3%82%BE/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "エメキン", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "ヒレ長青幹之",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E3%82%A8%E3%83%A1%E3%82%AD%E3%83%B3/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "アースアイリアルロングフィン", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "三色ラメラメ三色リアルロングフィン",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E3%82%A2%E3%83%BC%E3%82%B9%E3%82%A2%E3%82%A4%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%AD%E3%83%B3%E3%82%B0%E3%83%95%E3%82%A3%E3%83%B3/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "松井ヒレ長小町", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "ヒレ長",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E6%9D%BE%E4%BA%95%E3%83%92%E3%83%AC%E9%95%B7%E5%B0%8F%E7%94%BA/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "松井ヒレ長緑光幹之", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "ヒレ長幹之",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E6%9D%BE%E4%BA%95%E3%83%92%E3%83%AC%E9%95%B7%E7%B7%91%E5%85%89%E5%B9%B9%E4%B9%8B/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "松井ヒレ長黒幹之", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "ヒレ長幹之",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E6%9D%BE%E4%BA%95%E3%83%92%E3%83%AC%E9%95%B7%E9%BB%92%E5%B9%B9%E4%B9%8B/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "小野系紅帝", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "幹之",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E5%B0%8F%E9%87%8E%E7%B3%BB%E7%B4%85%E5%B8%9D/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "紅帝ヒレ長", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "ヒレ長",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E7%B4%85%E5%B8%9D%E3%83%92%E3%83%AC%E9%95%B7/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "キッシングワイドフィン", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E3%82%AD%E3%83%83%E3%82%B7%E3%83%B3%E3%82%B0%E3%83%AF%E3%82%A4%E3%83%89%E3%83%95%E3%82%A3%E3%83%B3/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "桜星ラメ", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "ラメ",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E6%A1%9C%E6%98%9F%E3%83%A9%E3%83%A1/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "ンクサファイアリアルロングフィン", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "ラメリアルロングフィンピンク",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E3%83%B3%E3%82%AF%E3%82%B5%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%AD%E3%83%B3%E3%82%B0%E3%83%95%E3%82%A3%E3%83%B3/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "桃香姫ラメ", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "ラメピンク",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E6%A1%83%E9%A6%99%E5%A7%AB%E3%83%A9%E3%83%A1/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "夜桜パラディーゾ", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "ラメ",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E5%A4%9C%E6%A1%9C%E3%83%91%E3%83%A9%E3%83%87%E3%82%A3%E3%83%BC%E3%82%BE/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "紅帝リアルロングフィン", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "リアルロングフィン",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E7%B4%85%E5%B8%9D%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%AD%E3%83%B3%E3%82%B0%E3%83%95%E3%82%A3%E3%83%B3/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "天女リアルロングフィン", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "リアルロングフィン",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E5%A4%A9%E5%A5%B3%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%AD%E3%83%B3%E3%82%B0%E3%83%95%E3%82%A3%E3%83%B3/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "藤煌", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "体外光",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E8%97%A4%E7%85%8C/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "黝冠ワイドフィン", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "ブラック",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E9%BB%9D%E5%86%A0%E3%83%AF%E3%82%A4%E3%83%89%E3%83%95%E3%82%A3%E3%83%B3/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "春菊ラディアレ", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "体外光ブラック",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E6%98%A5%E8%8F%8A%E3%83%A9%E3%83%87%E3%82%A3%E3%82%A2%E3%83%AC/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "花魁リアルロングフィン", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "三色ヒレ長リアルロングフィン黄",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E8%8A%B1%E9%AD%81%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%AD%E3%83%B3%E3%82%B0%E3%83%95%E3%82%A3%E3%83%B3/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "鳥取", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "三色ラメ体外光ラメ三色",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E9%B3%A5%E5%8F%96/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "猫飯", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "体外光三色ダルマ楊貴妃白幹之",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E7%8C%AB%E9%A3%AF/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "珀透明鱗スモールアイサムライ", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "サムライ透明鱗琥珀",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E7%8F%80%E9%80%8F%E6%98%8E%E9%B1%97%E3%82%B9%E3%83%A2%E3%83%BC%E3%83%AB%E3%82%A2%E3%82%A4%E3%82%B5%E3%83%A0%E3%83%A9%E3%82%A4/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "ミッドナイトフリル", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "体外光",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E3%83%9F%E3%83%83%E3%83%89%E3%83%8A%E3%82%A4%E3%83%88%E3%83%95%E3%83%AA%E3%83%AB/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "白幹之プラチナ体外光", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "体外光白幹之",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E7%99%BD%E5%B9%B9%E4%B9%8B%E3%83%97%E3%83%A9%E3%83%81%E3%83%8A%E4%BD%93%E5%A4%96%E5%85%89/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "リアージュキッシングワイドフィン", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "体外光",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E3%83%AA%E3%82%A2%E3%83%BC%E3%82%B8%E3%83%A5%E3%82%AD%E3%83%83%E3%82%B7%E3%83%B3%E3%82%B0%E3%83%AF%E3%82%A4%E3%83%89%E3%83%95%E3%82%A3%E3%83%B3/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "ージュプラチナリアルロングフィン", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "体外光リアルロングフィン",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E3%83%BC%E3%82%B8%E3%83%A5%E3%83%97%E3%83%A9%E3%83%81%E3%83%8A%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%AD%E3%83%B3%E3%82%B0%E3%83%95%E3%82%A3%E3%83%B3/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
+    },
+    {
+      name: "漆黒アースアイリアルロングフィン", reading: "", nameType: "ハウスネーム", verified: false, auto: true,
+      characteristic: "体外光ラメヒレ長リアルロングフィン",
+      discovery: { source: "楽天市場", url: "https://search.rakuten.co.jp/search/mall/%E3%83%A1%E3%83%80%E3%82%AB%20%E6%BC%86%E9%BB%92%E3%82%A2%E3%83%BC%E3%82%B9%E3%82%A2%E3%82%A4%E3%83%AA%E3%82%A2%E3%83%AB%E3%83%AD%E3%83%B3%E3%82%B0%E3%83%95%E3%82%A3%E3%83%B3/", date: "2026-07-25" },
+      status: "draft", mappedId: null,
+      note: "楽天出品から自動発見。分類は出品名からの推定。図鑑・JMA収録で verified:true に昇格予定"
     }
   ]
 };
